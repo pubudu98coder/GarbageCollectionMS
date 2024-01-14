@@ -4,7 +4,6 @@ import com.FinalYearProject.GarbageCollectionMS.util.UserType;
 
 public class User {
     private int id;
-    private UserType type;
     private String fName;
     private String lName;
     private String userName;
