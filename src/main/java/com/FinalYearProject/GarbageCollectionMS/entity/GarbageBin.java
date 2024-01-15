@@ -1,9 +1,28 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GarbageBin {
-
+    @Id
+    @GeneratedValue
     private int id;
-    private float longitude;
-    private float latitude;
 
+    @Column(nullable = false)
+    private float longitude;
+
+    @Column(nullable = false)
+    private float latitude;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
+    private List<HouseHolder> houseHolders;
+
+    @OneToMany(mappedBy = "garbageBin")
+    private List<BinRouteAssign> binRouteAssignList;
 }
