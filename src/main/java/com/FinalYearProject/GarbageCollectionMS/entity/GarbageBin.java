@@ -14,5 +14,4 @@ public class GarbageBin {
     private float latitude;
     private int houseHolderID;
     private float fillLevel;
-
 }
