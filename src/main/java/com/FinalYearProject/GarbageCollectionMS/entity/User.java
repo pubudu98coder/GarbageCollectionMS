@@ -1,5 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import com.FinalYearProject.GarbageCollectionMS.util.UserType;
+
 public class User {
     private int id;
     private String fName;
