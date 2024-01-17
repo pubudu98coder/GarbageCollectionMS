@@ -7,7 +7,9 @@ import java.util.List;
 @Entity
 public class HouseHolder extends User {
     @Column(nullable = false)
-    private String location;
+    private float longitude;
+    @Column(nullable = false)
+    private float latitude;
     @ManyToOne
     @JoinColumn(name = "garbageBinID",referencedColumnName = "id")
     private GarbageBin garbageBin;
