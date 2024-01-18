@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class GarbageBinRouteAssignKey implements Serializable {
     private int garbageBinID;
     private int routeID;
@@ -42,5 +45,5 @@ public class GarbageBinRouteAssign {
     @JoinColumn
     private Route route;
 
-    private int index;
+    private int binIndex;
 }
