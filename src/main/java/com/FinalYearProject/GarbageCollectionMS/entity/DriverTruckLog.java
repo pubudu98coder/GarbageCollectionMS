@@ -41,5 +41,6 @@ public class DriverTruckLog {
     @MapsId("truckID")
     @JoinColumn
     private Truck truck;
+
     private LocalDate assignedDate;
 }
