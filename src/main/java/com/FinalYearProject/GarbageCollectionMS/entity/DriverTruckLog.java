@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Embeddable
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class DriverTruckLogKey implements Serializable {
     private int driverID;
     private int truckID;
