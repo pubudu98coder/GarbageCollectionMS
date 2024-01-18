@@ -3,6 +3,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.repo.HousholderRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ public class HouseHolderService {
     private ModelMapper modelMapper;
     public String addHouseHolder(HouseHolderDTO houseHolderDTO){
         if(housholderRepo.existsById(houseHolderDTO.getId())){
-            return "Duplicate Data";
+            return VarList.RSP_DUPLICATED;
         }
         else{
             housholderRepo.save(modelMapper.map(houseHolderDTO, HouseHolder.class));
-            return "Success";
+            return VarList.RSP_SUCCESS;
         }
     }
 }
