@@ -5,11 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-class HouseHolderNotificationLogKey {
-    private int householderID;
+@Embeddable
+class HouseHolderNotificationLogKey implements Serializable {
+    private int houseHolderID;
     private int notificationID;
 
     @Override
@@ -17,11 +18,11 @@ class HouseHolderNotificationLogKey {
         if(this==o) return true;
         if(this.getClass()!=o.getClass()) return false;
         HouseHolderNotificationLogKey other=(HouseHolderNotificationLogKey)o;
-        return Objects.equals(this.householderID,other.householderID)&&Objects.equals(this.notificationID,other.notificationID);
+        return Objects.equals(this.houseHolderID,other.houseHolderID)&&Objects.equals(this.notificationID,other.notificationID);
     }
     @Override
     public int hashCode(){
-        return Objects.hash(this.householderID,this.notificationID);
+        return Objects.hash(this.houseHolderID,this.notificationID);
     }
 }
 @Entity
@@ -30,6 +31,7 @@ class HouseHolderNotificationLogKey {
 @AllArgsConstructor
 public class HouseHolderNotificationLog {
     @EmbeddedId
+    private HouseHolderNotificationLogKey houseHolderNotificationLogKey;
     private LocalDateTime recieveDateTime;
     @ManyToOne
     @MapsId("houseHolderID")
