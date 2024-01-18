@@ -2,7 +2,6 @@ package com.FinalYearProject.GarbageCollectionMS.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +17,6 @@ public class Route {
     @ManyToOne
     @JoinColumn(name="truckID",referencedColumnName = "id")
     private Truck truck;
-
     @OneToMany(mappedBy = "route")
-    private List<BinRouteAssign> binRouteAssignList;
+    private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
 }
