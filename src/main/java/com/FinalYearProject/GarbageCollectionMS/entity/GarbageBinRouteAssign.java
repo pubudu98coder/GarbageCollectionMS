@@ -9,35 +9,38 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-class BinRouteAssignKey implements Serializable {
+class GarbageBinRouteAssignKey implements Serializable {
     private int garbageBinID;
-    private int routID;
+    private int routeID;
     @Override
     public boolean equals(Object o){
         if(this==o) return true;
         if(this.getClass()!=o.getClass()) return false;
-        BinRouteAssignKey other=(BinRouteAssignKey)o;
-        return Objects.equals(this.garbageBinID,other.garbageBinID)&&Objects.equals(this.routID,other.garbageBinID);
+        GarbageBinRouteAssignKey other=(GarbageBinRouteAssignKey)o;
+        return Objects.equals(this.garbageBinID,other.garbageBinID)&&Objects.equals(this.routeID,other.routeID);
     }
     @Override
     public int hashCode(){
-        return Objects.hash(this.garbageBinID,this.routID);
+        return Objects.hash(this.garbageBinID,this.routeID);
     }
 }
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BinRouteAssign {
+public class GarbageBinRouteAssign {
     @EmbeddedId
-    private BinRouteAssignKey id;
+    private GarbageBinRouteAssignKey id;
+
     @ManyToOne
     @MapsId("garbageBinID")
     @JoinColumn
     private GarbageBin garbageBin;
+
     @ManyToOne
     @MapsId("routeID")
     @JoinColumn
     private Route route;
+
     private int index;
 }
