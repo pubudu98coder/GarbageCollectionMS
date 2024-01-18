@@ -24,5 +24,5 @@ public class GarbageBin {
     private List<HouseHolder> houseHolders;
 
     @OneToMany(mappedBy = "garbageBin")
-    private List<BinRouteAssign> binRouteAssignList;
+    private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
 }
