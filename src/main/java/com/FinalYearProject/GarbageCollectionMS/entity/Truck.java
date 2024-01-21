@@ -14,6 +14,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+
 public class Truck {
     @Id
     @GeneratedValue
