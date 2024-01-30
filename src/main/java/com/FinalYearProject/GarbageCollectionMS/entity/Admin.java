@@ -1,9 +1,10 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Admin extends User{
+@DiscriminatorValue("admin")
+public class Admin extends User {
     private String empNo;
 }
-
