@@ -12,7 +12,7 @@ public class GarbageBinDTO {
 
     private float filledLevel;
     private float filledWeight;
-    //private String status;
+    private String status;
 
 
 
