@@ -26,7 +26,7 @@ public class GarbageBin {
     @OneToMany(mappedBy = "garbageBin")
     private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
 
-    //private float filledLevel;
-    //private float filledWeight;
-    //private String status;
+    private float filledLevel;
+    private float filledWeight;
+    private String status;
 }
