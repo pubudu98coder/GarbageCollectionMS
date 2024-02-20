@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+
+@DiscriminatorValue("houseOwner")
 public class HouseHolder extends User {
     @Column(nullable = false)
     private float longitude;
@@ -18,7 +20,7 @@ public class HouseHolder extends User {
     @JoinColumn(name="inquiryID",referencedColumnName = "id")
     private Inquiry inquiry;
 
-    @OneToMany(mappedBy = "houseHolder")
+    @OneToMany(mappedBy = "houseOwner")
     private List<HouseHolderNotificationLog> houseHolderNotificationLogList;
 
 }
