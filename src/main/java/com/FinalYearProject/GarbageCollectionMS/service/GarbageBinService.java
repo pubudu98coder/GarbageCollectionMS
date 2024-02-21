@@ -37,7 +37,7 @@ public class GarbageBinService {
 
     public List<GarbageBinDTO> getFilledBins(){
 
-        List<GarbageBin> garbageBins = garbageBinRepo.findByStatus("not filled bin");
+        List<GarbageBin> garbageBins = garbageBinRepo.findByStatus("filled bin");
 
         List<GarbageBinDTO> garbageBinDTOs = garbageBins.stream()
                 .map(bin -> modelMapper.map(bin, GarbageBinDTO.class))
