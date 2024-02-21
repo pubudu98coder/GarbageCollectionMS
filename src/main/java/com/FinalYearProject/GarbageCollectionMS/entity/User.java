@@ -16,10 +16,19 @@ public class User {
     private int id;
 
     @Column(nullable = false)
-    private String fName;
+    private String firstName;
 
     @Column(nullable = false)
-    private String lName;
+    private String lastName;
+
+    @Column(nullable = false)
+    private String nicNumber;
+
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private String email;
 
     @Column(nullable = false)
     private String userName;
@@ -27,11 +36,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String email;
 
-    @Column(nullable = false)
-    private String address;
+
+
 
     // getters, setters, other methods
 }
