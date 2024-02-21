@@ -20,7 +20,7 @@ public class HouseHolder extends User {
     @JoinColumn(name="inquiryID",referencedColumnName = "id")
     private Inquiry inquiry;
 
-    @OneToMany(mappedBy = "houseOwner")
+    @OneToMany(mappedBy = "houseHolder")
     private List<HouseHolderNotificationLog> houseHolderNotificationLogList;
 
 }
