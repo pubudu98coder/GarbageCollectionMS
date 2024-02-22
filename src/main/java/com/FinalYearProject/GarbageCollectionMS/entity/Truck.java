@@ -24,9 +24,8 @@ public class Truck {
     @Column(nullable = false)
     private float capacity;
 
-    @OneToMany(mappedBy = "truck")
-    private List<Route> routes;
+    @Column(nullable = false)
+    private String status;
 
-    @OneToMany(mappedBy = "truck")
-    private List<DriverTruckLog> driverTruckLogList;
+
 }
