@@ -34,7 +34,17 @@ public class TruckService {
 
     }
 
+    public List<TruckDTO> availableTrucks(){
 
+        List<Truck> trucks = truckRepo.findByStatus("available");
+
+        List<TruckDTO> truckDTOS = trucks.stream()
+                .map(truck -> modelMapper.map(truck, TruckDTO.class))
+                .collect(Collectors.toList());
+
+        return truckDTOS;
+
+    }
 
 
 
