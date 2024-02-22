@@ -13,7 +13,10 @@ import java.util.List;
 @DiscriminatorValue("driver")
 public class Driver extends User{
 
+    @Column(nullable = false)
     private String empNumber;
+
+    @Column(nullable = false)
     private String dlNumber;
 
     @OneToMany(mappedBy = "driver")
