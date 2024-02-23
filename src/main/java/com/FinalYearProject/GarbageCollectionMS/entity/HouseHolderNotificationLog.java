@@ -33,10 +33,10 @@ public class HouseHolderNotificationLog {
     @EmbeddedId
     private HouseHolderNotificationLogKey houseHolderNotificationLogKey;
     private LocalDateTime recieveDateTime;
-//    @ManyToOne
-//    @MapsId("houseHolderID")
-//    @JoinColumn
-  //  private HouseHolder houseHolder;
+    @ManyToOne
+    @MapsId("houseHolderID")
+    @JoinColumn
+    private HouseHolder houseHolder;
 
     @ManyToOne
     @MapsId("notificationID")

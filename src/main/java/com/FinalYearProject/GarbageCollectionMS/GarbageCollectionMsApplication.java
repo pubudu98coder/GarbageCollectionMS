@@ -37,11 +37,11 @@ public class GarbageCollectionMsApplication {
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
 			var houseHolder = RegisterRequest.builder()
-					.firstName("Driver")
-					.lastName("driverL")
-					.email("driver@gmail.com")
+					.firstName("Lilanka")
+					.lastName("Sawan")
+					.email("lilanka@gmail.com")
 					.password("5678")
-					.role(Role.DRIVER)
+					.role(Role.HOUSE_HOLDER)
 					.build();
 			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
 

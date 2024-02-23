@@ -35,10 +35,10 @@ class DriverTruckLogKey implements Serializable {
 public class DriverTruckLog {
     @EmbeddedId
     private DriverTruckLogKey id;
-//    @ManyToOne
-//    @MapsId("driverID")
-//    @JoinColumn
-//    private Driver driver;
+    @ManyToOne
+    @MapsId("driverID")
+    @JoinColumn
+    private Driver driver;
 
     @ManyToOne
     @MapsId("truckID")

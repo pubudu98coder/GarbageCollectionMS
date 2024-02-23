@@ -20,7 +20,7 @@ public class Inquiry {
     @GeneratedValue
     private int id;
     private String description;
-//    private LocalDateTime createdDateTime;
-//    @OneToMany(mappedBy = "inquiry")
-//    private List<HouseHolder> houseHolders;
+    private LocalDateTime createdDateTime;
+    @OneToMany(mappedBy = "inquiry")
+    private List<HouseHolder> houseHolders;
 }
