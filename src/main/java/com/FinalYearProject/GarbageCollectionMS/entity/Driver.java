@@ -19,6 +19,9 @@ public class Driver extends User{
     @Column(nullable = false)
     private String dlNumber;
 
+    @Column(nullable = false)
+    private String status;
+
     @OneToMany(mappedBy = "driver")
     private List<DriverTruckLog> driverTruckLogList;
 }
