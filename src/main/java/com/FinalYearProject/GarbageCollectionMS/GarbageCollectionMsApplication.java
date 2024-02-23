@@ -1,6 +1,11 @@
 package com.FinalYearProject.GarbageCollectionMS;
 
+import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
+import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
+import com.FinalYearProject.GarbageCollectionMS.entity.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Role;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,4 +22,29 @@ public class GarbageCollectionMsApplication {
 
 		return new ModelMapper();
 	}
-}
+	@Bean
+	public CommandLineRunner commandLineRunner(
+			AuthenticationService service, /*HouseHolderRepository houseHolderRepository,*/UserRepository userRepository
+	) {
+		return args -> {
+			var admin = RegisterRequest.builder()
+					.firstName("Pubudu")
+					.lastName("Tharaka")
+					.email("pubudu@gmail.com")
+					.password("1234")
+					.role(Role.ADMIN)
+					.build();
+			System.out.println("Admin token: " + service.register(admin).getAccessToken());
+
+			var houseHolder = RegisterRequest.builder()
+					.firstName("Driver")
+					.lastName("driverL")
+					.email("driver@gmail.com")
+					.password("5678")
+					.role(Role.DRIVER)
+					.build();
+			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
+
+		};
+		}
+	}

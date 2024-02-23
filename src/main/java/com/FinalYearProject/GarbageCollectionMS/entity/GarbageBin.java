@@ -20,8 +20,8 @@ public class GarbageBin {
 
     @Column(nullable = false)
     private float latitude;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
-    private List<HouseHolder> houseHolders;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
+//    private List<HouseHolder> houseHolders;
 
     @OneToMany(mappedBy = "garbageBin")
     private List<GarbageBinRouteAssign> garbageBinRouteAssignList;

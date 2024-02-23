@@ -4,18 +4,16 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+//@Builder
+@NonNull
 @AllArgsConstructor
+@RequiredArgsConstructor
+@PrimaryKeyJoinColumn(name = "driver_id")
+public class Driver extends User {
+    private String licence_no;
 
-@DiscriminatorValue("driver")
-public class Driver extends User{
-
-    private String empNumber;
-    private String dlNumber;
-
-    @OneToMany(mappedBy = "driver")
-    private List<DriverTruckLog> driverTruckLogList;
+//    @OneToMany(mappedBy = "driver")
+//    private List<DriverTruckLog> driverTruckLogList;
 }
