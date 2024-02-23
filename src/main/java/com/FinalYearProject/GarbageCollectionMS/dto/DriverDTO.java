@@ -38,4 +38,8 @@ public class DriverDTO {
     @Column(nullable = false)
     private String dlNumber;
 
+    @Column(nullable = false)
+    private String status;
+
+
 }
