@@ -1,12 +1,17 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.TruckDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
 import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepo;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -32,10 +37,26 @@ public class DriverService {
         driver.setPassword(addDriverDTO.getPassword());
         driver.setEmpNumber(addDriverDTO.getEmpNumber());
         driver.setDlNumber(addDriverDTO.getDlNumber());
+        driver.setStatus(addDriverDTO.getStatus());
 
 
 
         return driverRepo.save(driver);
 
     }
+
+
+    public List<DriverDTO> availableDrivers(){
+
+        List<Driver> drivers = driverRepo.findByStatus("available");
+
+        List<DriverDTO> driverDTOS  = drivers.stream()
+                .map(driver -> modelMapper.map(driver, DriverDTO.class))
+                .collect(Collectors.toList());
+
+        return driverDTOS;
+
+    }
+
+
 }
