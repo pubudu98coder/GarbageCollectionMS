@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 public class NewsPageDTO {
     private int id;
     private String newsCatergory;
+    private String newsTitle;
     private String newsDetails;
+    private String image;
 }
