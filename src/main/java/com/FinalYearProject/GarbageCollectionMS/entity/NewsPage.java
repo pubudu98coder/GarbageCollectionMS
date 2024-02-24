@@ -16,7 +16,9 @@ public class NewsPage {
     @GeneratedValue
 
     private String newsCatergory;
+    private String newsTitle;
     private String newsDetails;
+    private String image;
 
 }
 
