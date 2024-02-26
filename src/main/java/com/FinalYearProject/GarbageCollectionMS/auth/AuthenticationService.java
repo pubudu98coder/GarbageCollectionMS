@@ -1,14 +1,14 @@
 package com.FinalYearProject.GarbageCollectionMS.auth;
 
 import com.FinalYearProject.GarbageCollectionMS.config.JwtService;
-import com.FinalYearProject.GarbageCollectionMS.entity.Driver;
-import com.FinalYearProject.GarbageCollectionMS.entity.HouseHolder;
-import com.FinalYearProject.GarbageCollectionMS.entity.User;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Role;
 import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepository;
 import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
 import com.FinalYearProject.GarbageCollectionMS.repo.TokenRepository;
-import com.FinalYearProject.GarbageCollectionMS.entity.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
 import com.FinalYearProject.GarbageCollectionMS.token.Token;
 import com.FinalYearProject.GarbageCollectionMS.token.TokenType;
 import com.fasterxml.jackson.databind.ObjectMapper;
