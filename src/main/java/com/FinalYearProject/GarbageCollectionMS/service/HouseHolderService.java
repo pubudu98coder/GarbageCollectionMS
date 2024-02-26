@@ -1,7 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;

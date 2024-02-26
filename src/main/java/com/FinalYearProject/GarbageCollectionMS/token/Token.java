@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.token;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.User;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

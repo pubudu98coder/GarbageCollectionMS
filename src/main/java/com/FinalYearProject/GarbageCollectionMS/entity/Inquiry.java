@@ -1,5 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
