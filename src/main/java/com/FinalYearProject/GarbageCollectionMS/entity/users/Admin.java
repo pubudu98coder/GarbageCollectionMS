@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.entity;
+package com.FinalYearProject.GarbageCollectionMS.entity.users;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
