@@ -1,6 +1,6 @@
-package com.FinalYearProject.GarbageCollectionMS.entity;
+package com.FinalYearProject.GarbageCollectionMS.repo;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.User;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.entity;
+package com.FinalYearProject.GarbageCollectionMS.entity.users;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Role;
 import com.FinalYearProject.GarbageCollectionMS.token.Token;
