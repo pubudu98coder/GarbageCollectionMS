@@ -57,4 +57,16 @@ public class GarbageBinService {
         return garbageBinDTOs;
     }
 
+
+    public GarbageBin addBinDetails(GarbageBinDTO garbageBinDTO){
+//        BinDetails binDetails = new BinDetails();
+//
+//        binDetails.setHeight(addbinDetailsDTO.getHeight());
+//        binDetails.setBaseArea(addbinDetailsDTO.getBaseArea());
+//        binDetails.setNumOfTargetHouses(addbinDetailsDTO.getNumOfTargetHouses());
+          GarbageBin garbageBin=modelMapper.map(garbageBinDTO,GarbageBin.class);
+
+        return garbageBinRepo.save(garbageBin);
+    }
+
 }
