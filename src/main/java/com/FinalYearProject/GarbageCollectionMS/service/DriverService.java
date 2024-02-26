@@ -1,9 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.TruckDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.Driver;
-import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
 import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepo;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
@@ -36,7 +34,6 @@ public class DriverService {
         driver.setUserName(addDriverDTO.getUserName());
         driver.setPassword(addDriverDTO.getPassword());
         driver.setEmpNumber(addDriverDTO.getEmpNumber());
-        driver.setDlNumber(addDriverDTO.getDlNumber());
         driver.setStatus(addDriverDTO.getStatus());
 
 
