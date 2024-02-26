@@ -13,6 +13,13 @@ import java.util.List;
 public class Driver extends User {
     private String licence_no;
 
+
+    @Column(nullable = false)
+    private String empNumber;
+
+    @Column(nullable = false)
+    private String status;
+
     @OneToMany(mappedBy = "driver")
     private List<DriverTruckLog> driverTruckLogList;
 }
