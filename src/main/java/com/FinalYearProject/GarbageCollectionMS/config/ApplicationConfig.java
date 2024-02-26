@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.config;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
