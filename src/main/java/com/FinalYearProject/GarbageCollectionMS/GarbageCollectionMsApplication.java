@@ -57,3 +57,17 @@ public class GarbageCollectionMsApplication {
 		};
 		}
 	}
+    @Bean
+    public CommandLineRunner commandLineRunner(
+            GarbageBinService garbageBinService, GarbageBinRepo garbageBinRepo
+            ){
+        return args -> {
+            GarbageBinDTO garbageBinDTO=new GarbageBinDTO();
+            garbageBinDTO.setBaseArea("fdfd");
+            garbageBinDTO.setNumOfTargetHouses(3);
+            garbageBinDTO.setHeight(3);
+
+            garbageBinService.addBinDetails(garbageBinDTO);
+        };
+    }
+}
