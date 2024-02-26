@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.auth;
 
-import com.FinalYearProject.GarbageCollectionMS.config.JwtService;
+import  com.FinalYearProject.GarbageCollectionMS.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
