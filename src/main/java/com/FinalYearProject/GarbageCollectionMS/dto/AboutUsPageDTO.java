@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class AboutUsPageDTO {
     private int id;
     private String content;
-    private String image;
+    private String selectedImage;
 }
