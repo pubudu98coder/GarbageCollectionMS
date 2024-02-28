@@ -18,16 +18,16 @@ public enum Role {
             ADMIN_UPDATE,
             ADMIN_CREATE,
             ADMIN_DELETE,
-            MANAGER_READ,
-            MANAGER_UPDATE,
-            MANAGER_CREATE,
-            MANAGER_DELETE
+            SUPERVISOR_READ,
+            SUPERVISOR_UPDATE,
+            SUPERVISOR_CREATE,
+            SUPERVISOR_DELETE
     )),
-    MANAGER(Set.of(
-            MANAGER_READ,
-            MANAGER_UPDATE,
-            MANAGER_CREATE,
-            MANAGER_DELETE
+    SUPERVISOR(Set.of(
+            SUPERVISOR_READ,
+            SUPERVISOR_UPDATE,
+            SUPERVISOR_CREATE,
+            SUPERVISOR_DELETE
     )),
     HOUSE_HOLDER(Set.of(
             HOUSE_HOLDER_READ,

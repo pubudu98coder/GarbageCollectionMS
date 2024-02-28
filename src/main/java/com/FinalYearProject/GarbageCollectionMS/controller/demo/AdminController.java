@@ -1,5 +1,9 @@
 package com.FinalYearProject.GarbageCollectionMS.controller.demo;
 
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
+import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
+import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "api/v1/admin")
 @PreAuthorize("hasAnyRole('ADMIN')")
 public class AdminController {
+    @Autowired
+    private GarbageBinService garbageBinService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('admin:read')")
@@ -14,10 +20,11 @@ public class AdminController {
         return "GET::admin controller";
     }
 
-    @PostMapping
+    @PostMapping("/garbageBin/add")
     @PreAuthorize("hasAuthority('admin:create')")
-    public String post(){
-        return "POST::admin controller";
+    public GarbageBin addGarbageBin(@RequestBody GarbageBinDTO garbageBinDTO){
+        return garbageBinService.addBinDetails(garbageBinDTO);
+        //"POST::admin controller";
     }
 
     @PutMapping

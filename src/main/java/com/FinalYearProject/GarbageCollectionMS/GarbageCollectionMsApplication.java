@@ -41,6 +41,7 @@ public class GarbageCollectionMsApplication {
 					.lastName("Tharaka")
 					.email("pubudu@gmail.com")
 					.password("1234")
+					.nicNo("981582942V")
 					.role(Role.ADMIN)
 					.build();
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
@@ -50,6 +51,7 @@ public class GarbageCollectionMsApplication {
 					.lastName("Sawan")
 					.email("lilanka@gmail.com")
 					.password("5678")
+					.nicNo("987474773V")
 					.role(Role.HOUSE_HOLDER)
 					.build();
 			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
