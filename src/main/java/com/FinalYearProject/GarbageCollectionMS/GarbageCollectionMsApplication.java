@@ -4,6 +4,7 @@ import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
 import com.FinalYearProject.GarbageCollectionMS.dto.AboutUsPageDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseOwnerComplaintsDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
@@ -11,6 +12,7 @@ import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Role;
 import com.FinalYearProject.GarbageCollectionMS.service.AboutUsPageService;
 import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
+import com.FinalYearProject.GarbageCollectionMS.service.HouseOwnerComplaintsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,7 +33,7 @@ public class GarbageCollectionMsApplication {
 	}
 	@Bean
 	public CommandLineRunner commandLineRunner(
-			AuthenticationService service, HouseHolderRepository houseHolderRepository, UserRepository userRepository,GarbageBinService garbageBinService, AboutUsPageService aboutUsPageService
+			AuthenticationService service, HouseHolderRepository houseHolderRepository, UserRepository userRepository,GarbageBinService garbageBinService, AboutUsPageService aboutUsPageService, HouseOwnerComplaintsService houseOwnerComplaintsService
 	) {
 		return args -> {
 			var admin = RegisterRequest.builder()
@@ -67,9 +69,14 @@ public class GarbageCollectionMsApplication {
 			garbageBinService.addBinDetails(garbageBinDTO);
 
 			//added from ama
-			AboutUsPageDTO aboutUsPageDTO=new AboutUsPageDTO();
-			aboutUsPageDTO.setContent("dffjdfjdnjhj");
-			aboutUsPageService.addAboutUsData(aboutUsPageDTO);
+//			AboutUsPageDTO aboutUsPageDTO=new AboutUsPageDTO();
+//			aboutUsPageDTO.setContent("dffjdfjdnjhj");
+//			aboutUsPageService.addAboutUsData(aboutUsPageDTO);
+
+//			HouseOwnerComplaintsDTO houseOwnerComplaintsDTO=new HouseOwnerComplaintsDTO();
+//			houseOwnerComplaintsDTO.setContactNo("077-6025233");
+//			houseOwnerComplaintsDTO.setDescription("dfffggghhjjj");
+//			houseOwnerComplaintsService.addHouseOwnerComplaints(houseOwnerComplaintsDTO);
 		};
 	}
 }
