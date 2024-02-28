@@ -16,5 +16,5 @@ public class AboutUsPage {
     @GeneratedValue
     private int id;
     private String Content;
-    private String image;
+    private String selectedImage;
 }
