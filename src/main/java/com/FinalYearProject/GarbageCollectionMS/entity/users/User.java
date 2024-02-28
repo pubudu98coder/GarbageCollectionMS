@@ -29,12 +29,13 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String lastName;
 
-    //@Column(nullable = false)
-    private String nicNumber;
+    @Column(unique = true,nullable = false)
+    private String nicNo;
 
    // @Column(nullable = false)
     private String address;
-    @Column(unique = true,nullable = false)
+
+    @Column(nullable = false)
     private String email;
 
     //@Column(nullable = false)
@@ -55,7 +56,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return nicNo;
     }
 
     @Override

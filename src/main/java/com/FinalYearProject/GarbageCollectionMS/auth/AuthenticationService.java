@@ -1,14 +1,8 @@
 package com.FinalYearProject.GarbageCollectionMS.auth;
 
 import  com.FinalYearProject.GarbageCollectionMS.config.JwtService;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Role;
-import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepository;
-import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
-import com.FinalYearProject.GarbageCollectionMS.repo.TokenRepository;
-import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.*;
+import com.FinalYearProject.GarbageCollectionMS.repo.*;
 import com.FinalYearProject.GarbageCollectionMS.token.Token;
 import com.FinalYearProject.GarbageCollectionMS.token.TokenType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +14,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 
 @Service
@@ -33,14 +26,28 @@ public class AuthenticationService {
     private final TokenRepository tokenRepository;
     private final HouseHolderRepository houseHolderRepository;
     private final DriverRepository driverRepository;
+    private final SupervisorRepository supervisorRepository;
 
     public AuthenticationResponse register(RegisterRequest request){
         User user=null;
+        if(request.getRole()== Role.SUPERVISOR){
+            user=new Supervisor();
+            user.setFirstName(request.getFirstName());
+            user.setLastName(request.getLastName());
+            user.setEmail(request.getEmail());
+            user.setNicNo(request.getNicNo());
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setRole(request.getRole());
+
+
+            supervisorRepository.save((Supervisor) user);
+        }
         if(request.getRole()== Role.HOUSE_HOLDER){
             user=new HouseHolder();
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());
             user.setEmail(request.getEmail());
+            user.setNicNo(request.getNicNo());
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setRole(request.getRole());
 
@@ -52,6 +59,7 @@ public class AuthenticationService {
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());
             user.setEmail(request.getEmail());
+            user.setNicNo(request.getNicNo());
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setRole(request.getRole());
 
@@ -63,22 +71,13 @@ public class AuthenticationService {
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());
             user.setEmail(request.getEmail());
+            user.setNicNo(request.getNicNo());
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setRole(request.getRole());
 
 
             driverRepository.save((Driver) user);
         }
-
-//        HouseHolder user= HouseHolder.builder()
-//                .firstName(request.getFirstName())
-//                .lastName(request.getLastName())
-//                .email(request.getEmail())
-//                .password(passwordEncoder.encode(request.getPassword()))
-//                .role(request.getRole())
-//                .build();
-
-        // User user=mUser;
 
         userRepository.save(user);
         var jwtToken=jwtService.generateToken(user);
@@ -90,11 +89,11 @@ public class AuthenticationService {
     public AuthenticationResponse authenticate(AuthenticationRequest request){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getNicNo(),
                         request.getPassword()
                 )
         );
-        User user=userRepository.findByEmail(request.getEmail())
+        User user=userRepository.findByNicNo(request.getNicNo())
                 .orElseThrow();
         var accessToken=jwtService.generateToken(user);
         var refreshToken=jwtService.generateRefreshToken(user);
@@ -130,14 +129,14 @@ public class AuthenticationService {
             HttpServletResponse response) throws IOException {
         final String authHeader=request.getHeader(HttpHeaders.AUTHORIZATION);
         final String refreshToken;
-        final String userEmail;
+        final String nicNo;
         if(authHeader==null||!authHeader.startsWith("Bearer ")){
             return;
         }
         refreshToken=authHeader.substring(7);
-        userEmail=jwtService.extractUsername(refreshToken);
-        if(userEmail!=null){
-            var user=this.userRepository.findByEmail(userEmail).orElseThrow();
+        nicNo=jwtService.extractUsername(refreshToken);
+        if(nicNo!=null){
+            var user=this.userRepository.findByNicNo(nicNo).orElseThrow();
             if(jwtService.isTokenValid(refreshToken,user)){
                 var accessToken= jwtService.generateToken(user);
                 revokeAllUserTokens(user);

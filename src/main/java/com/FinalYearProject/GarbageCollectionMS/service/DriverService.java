@@ -28,7 +28,7 @@ public class DriverService {
 
         driver.setFirstName(addDriverDTO.getFirstName());
         driver.setLastName(addDriverDTO.getLastName());
-        driver.setNicNumber(addDriverDTO.getNicNumber());
+        driver.setNicNo(addDriverDTO.getNicNumber());
         driver.setAddress(addDriverDTO.getAddress());
         driver.setEmail(addDriverDTO.getEmail());
         driver.setUserName(addDriverDTO.getUserName());
