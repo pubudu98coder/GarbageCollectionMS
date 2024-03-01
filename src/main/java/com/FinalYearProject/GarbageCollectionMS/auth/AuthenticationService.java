@@ -42,7 +42,7 @@ public class AuthenticationService {
 
             supervisorRepository.save((Supervisor) user);
         }
-        if(request.getRole()== Role.HOUSE_HOLDER){
+        if(request.getRole()== Role.HOUSEHOLDER){
             user=new HouseHolder();
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());

@@ -52,7 +52,7 @@ public class GarbageCollectionMsApplication {
 					.email("lilanka@gmail.com")
 					.password("5678")
 					.nicNo("987474773V")
-					.role(Role.HOUSE_HOLDER)
+					.role(Role.HOUSEHOLDER)
 					.build();
 			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
 			HouseHolder houseHolder1=houseHolderRepository.findById(2).orElse(null);

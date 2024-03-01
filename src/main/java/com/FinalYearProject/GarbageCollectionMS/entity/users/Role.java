@@ -29,11 +29,11 @@ public enum Role {
             SUPERVISOR_CREATE,
             SUPERVISOR_DELETE
     )),
-    HOUSE_HOLDER(Set.of(
-            HOUSE_HOLDER_READ,
-            HOUSE_HOLDER_UPDATE,
-            HOUSE_HOLDER_CREATE,
-            HOUSE_HOLDER_DELETE
+    HOUSEHOLDER(Set.of(
+            HOUSEHOLDER_READ,
+            HOUSEHOLDER_UPDATE,
+            HOUSEHOLDER_CREATE,
+            HOUSEHOLDER_DELETE
     )),
     DRIVER(Set.of(
             DRIVER_READ,
