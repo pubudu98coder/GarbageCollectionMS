@@ -99,7 +99,7 @@ public class AuthenticationService {
         var refreshToken=jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, accessToken);
-        return AuthenticationResponse.builder().accessToken(accessToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse.builder().accessToken(accessToken).refreshToken(refreshToken).role(user.getRole()).build();
     }
 
     private void saveUserToken(User user, String jwtToken) {
@@ -124,29 +124,55 @@ public class AuthenticationService {
         tokenRepository.saveAll(validUserTokens);
     }
 
-    public void refreshToken(
-            HttpServletRequest request,
-            HttpServletResponse response) throws IOException {
-        final String authHeader=request.getHeader(HttpHeaders.AUTHORIZATION);
-        final String refreshToken;
-        final String nicNo;
-        if(authHeader==null||!authHeader.startsWith("Bearer ")){
-            return;
-        }
-        refreshToken=authHeader.substring(7);
-        nicNo=jwtService.extractUsername(refreshToken);
-        if(nicNo!=null){
-            var user=this.userRepository.findByNicNo(nicNo).orElseThrow();
-            if(jwtService.isTokenValid(refreshToken,user)){
-                var accessToken= jwtService.generateToken(user);
-                revokeAllUserTokens(user);
-                saveUserToken(user,accessToken);
-                var authResponse=AuthenticationResponse.builder()
-                        .accessToken(accessToken)
-                        .refreshToken(refreshToken)
-                        .build();
-                new ObjectMapper().writeValue(response.getOutputStream(),authResponse);
-            }
+//    public void refreshToken(
+//            HttpServletRequest request,
+//            HttpServletResponse response) throws IOException {
+//        final String authHeader=request.getHeader(HttpHeaders.AUTHORIZATION);
+//        final String refreshToken;
+//        final String nicNo;
+//        if(authHeader==null||!authHeader.startsWith("Bearer ")){
+//            return;
+//        }
+//        refreshToken=authHeader.substring(7);
+//        nicNo=jwtService.extractUsername(refreshToken);
+//        if(nicNo!=null){
+//            var user=this.userRepository.findByNicNo(nicNo).orElseThrow();
+//            if(jwtService.isTokenValid(refreshToken,user)){
+//                var accessToken= jwtService.generateToken(user);
+//                revokeAllUserTokens(user);
+//                saveUserToken(user,accessToken);
+//                var authResponse=AuthenticationResponse.builder()
+//                        .accessToken(accessToken)
+//                        .refreshToken(refreshToken)
+//                        .build();
+//                new ObjectMapper().writeValue(response.getOutputStream(),authResponse);
+//            }
+//        }
+//    }
+public void refreshToken(
+        HttpServletRequest request,
+        HttpServletResponse response) throws IOException {
+    final String authHeader=request.getHeader(HttpHeaders.AUTHORIZATION);
+    final String refreshToken;
+    final String nicNo;
+    if(authHeader==null||!authHeader.startsWith("Bearer ")){
+        return;
+    }
+    refreshToken=authHeader.substring(7);
+    nicNo=jwtService.extractUsername(refreshToken);
+    if(nicNo!=null){
+        var user=this.userRepository.findByNicNo(nicNo).orElseThrow();
+        if(jwtService.isTokenValid(refreshToken,user)){
+            var accessToken= jwtService.generateToken(user);
+            revokeAllUserTokens(user);
+            saveUserToken(user,accessToken);
+            var authResponse=AuthenticationResponse.builder()
+                    .accessToken(accessToken)
+                    .refreshToken(refreshToken)
+                    .role(user.getRole())
+                    .build();
+            new ObjectMapper().writeValue(response.getOutputStream(),authResponse);
         }
     }
+}
 }
