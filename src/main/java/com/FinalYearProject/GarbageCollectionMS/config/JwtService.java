@@ -1,5 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.config;
 
+import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -34,31 +35,32 @@ public class JwtService {
         final Claims claims=extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
-    public String generateToken(UserDetails userDetails){
-        return generateToken(new HashMap<>(),userDetails);
+    public String generateToken(User user){
+        return generateToken(new HashMap<>(),user);
     }
     public String generateToken(
             Map<String, Object> extractClaims,
-            UserDetails userDetails)
+            User user)
     {
-        return buildToken(extractClaims,userDetails,jwtExpiration);
+        return buildToken(extractClaims,user,jwtExpiration);
     }
 
     public String generateRefreshToken(
-            UserDetails userDetails)
+            User user)
     {
-        return buildToken(new HashMap<>(),userDetails,jwtRefreshExpiration);
+        return buildToken(new HashMap<>(),user,jwtRefreshExpiration);
     }
 
     private String buildToken(
             Map<String,Object> extractClaims,
-            UserDetails userDetails,
+            User user,//changed to UserDetails to User
             long jwtExpiration
     ){
         return Jwts
                 .builder()
                 .setClaims(extractClaims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(user.getUsername())
+                .claim("role",user.getRole())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+jwtExpiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
