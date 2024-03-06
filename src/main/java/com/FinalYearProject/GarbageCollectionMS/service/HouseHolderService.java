@@ -1,8 +1,8 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.HouseHolder;
-import com.FinalYearProject.GarbageCollectionMS.repo.HousholderRepo;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class HouseHolderService {
     @Autowired
-    private HousholderRepo housholderRepo;
+    private HouseHolderRepository housholderRepo;
     @Autowired
     private ModelMapper modelMapper;
     public String addHouseHolder(HouseHolderDTO houseHolderDTO){

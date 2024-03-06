@@ -10,9 +10,15 @@ import lombok.NoArgsConstructor;
 
 public class GarbageBinDTO {
 
-    private float filledLevel;
-    private float filledWeight;
-    private String status;
+    private double height;
+
+    private String baseArea;
+
+    private int numOfTargetHouses;
+
+//    private float filledLevel;
+//    private float filledWeight;
+    //private String status;
 
 
 

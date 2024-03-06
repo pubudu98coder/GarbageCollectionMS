@@ -1,5 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,15 +12,25 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GarbageBin {
+
     @Id
     @GeneratedValue
     private int id;
 
-    @Column(nullable = false)
-    private float longitude;
+    @Column(name = "height", nullable = false)
+    private double height;
 
-    @Column(nullable = false)
-    private float latitude;
+    @Column(name = "base_area", nullable = false)
+    private String baseArea;
+
+    @Column(name = "num_of_target_houses", nullable = false)
+    private int numOfTargetHouses;
+
+    //@Column(nullable = false)
+    //private float longitude;
+//
+//    @Column(nullable = false)
+//    private float latitude;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
     private List<HouseHolder> houseHolders;
 

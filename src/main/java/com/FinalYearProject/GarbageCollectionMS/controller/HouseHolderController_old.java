@@ -4,7 +4,6 @@ import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "api/v1/houseHolder")
-public class HouseHolderController {
+public class HouseHolderController_old {
     @Autowired
     private HouseHolderService houseHolderService;
     @Autowired

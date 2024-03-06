@@ -1,5 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +34,7 @@ public class HouseHolderNotificationLog {
     @EmbeddedId
     private HouseHolderNotificationLogKey houseHolderNotificationLogKey;
     private LocalDateTime recieveDateTime;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("houseHolderID")
     @JoinColumn
     private HouseHolder houseHolder;
