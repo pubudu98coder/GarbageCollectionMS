@@ -11,7 +11,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping(value ="/api/v1/auth")
 @RequiredArgsConstructor
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
     @PostMapping(value = "/register")
