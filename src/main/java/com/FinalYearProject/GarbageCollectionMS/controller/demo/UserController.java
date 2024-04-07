@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v1/users")
-@CrossOrigin
+@RequestMapping(value = "api/v1/auth/users")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
 public class UserController {
     @GetMapping
     public List<String> getUsers(){
