@@ -2,6 +2,9 @@ package com.FinalYearProject.GarbageCollectionMS.auth;
 
 import  com.FinalYearProject.GarbageCollectionMS.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.*;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Supervisor;
 import com.FinalYearProject.GarbageCollectionMS.repo.*;
 import com.FinalYearProject.GarbageCollectionMS.token.Token;
 import com.FinalYearProject.GarbageCollectionMS.token.TokenType;
@@ -39,7 +42,6 @@ public class AuthenticationService {
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setRole(request.getRole());
 
-
             supervisorRepository.save((Supervisor) user);
         }
         if(request.getRole()== Role.HOUSEHOLDER){
@@ -50,7 +52,6 @@ public class AuthenticationService {
             user.setNicNo(request.getNicNo());
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setRole(request.getRole());
-
 
             houseHolderRepository.save((HouseHolder) user);
         }
@@ -79,7 +80,7 @@ public class AuthenticationService {
             driverRepository.save((Driver) user);
         }
 
-        userRepository.save(user);
+        //userRepository.save(user);
         var jwtToken=jwtService.generateToken(user);
         var refreshToken=jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
