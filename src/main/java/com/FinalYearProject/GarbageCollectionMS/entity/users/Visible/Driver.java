@@ -1,6 +1,7 @@
-package com.FinalYearProject.GarbageCollectionMS.entity.users;
+package com.FinalYearProject.GarbageCollectionMS.entity.users.Visible;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.DriverTruckLog;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import jakarta.persistence.*;
 import lombok.*;
 
