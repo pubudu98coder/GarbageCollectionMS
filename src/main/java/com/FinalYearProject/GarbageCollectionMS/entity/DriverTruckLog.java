@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

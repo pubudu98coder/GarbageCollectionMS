@@ -2,10 +2,8 @@ package com.FinalYearProject.GarbageCollectionMS;
 
 import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
-import com.FinalYearProject.GarbageCollectionMS.dto.AboutUsPageDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseOwnerComplaintsDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
 import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;

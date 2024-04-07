@@ -1,7 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
 import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepo;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;

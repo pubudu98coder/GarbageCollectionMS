@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
