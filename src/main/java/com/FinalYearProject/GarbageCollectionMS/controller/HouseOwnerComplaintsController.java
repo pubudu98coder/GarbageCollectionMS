@@ -1,10 +1,8 @@
 package com.FinalYearProject.GarbageCollectionMS.controller;
 
 
-import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.HouseOwnerComplaintsDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.HouseOwnerComplaints;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseOwnerComplaintsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
