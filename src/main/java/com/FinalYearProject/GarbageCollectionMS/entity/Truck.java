@@ -9,11 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-
-
 public class Truck {
-
     @Id
     @GeneratedValue
     private int id;
@@ -22,7 +18,7 @@ public class Truck {
     private String regNumber;
 
     @Column(nullable = false)
-    private float capacity;
+    private double capacity;
 
     @Column(nullable = false)
     private String status;

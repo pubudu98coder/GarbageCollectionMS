@@ -37,4 +37,8 @@ public class HouseHolder extends User {
 
     private List<HouseHolderNotificationLog> houseHolderNotificationLogList;
 
+    //methods
+    //register
+
+
 }

@@ -83,10 +83,8 @@ public class User implements UserDetails {
         return true;
     }
 
-
-
-
-
-    // getters, setters, other methods
+    //methods
+    //method for register
+    
 }
 
