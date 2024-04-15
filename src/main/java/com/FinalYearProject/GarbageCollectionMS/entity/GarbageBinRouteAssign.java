@@ -13,7 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 class GarbageBinRouteAssignKey implements Serializable {
-    private int garbageBinID;
+    private String garbageBinID;
     private int routeID;
     @Override
     public boolean equals(Object o){
