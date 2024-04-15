@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class GarbageBinDTO {
+    private String id;
 
     private double height;
 
