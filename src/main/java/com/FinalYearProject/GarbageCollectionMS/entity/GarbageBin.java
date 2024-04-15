@@ -14,8 +14,7 @@ import java.util.List;
 public class GarbageBin {
 
     @Id
-    @GeneratedValue
-    private int id;
+    private String id;
 
     @Column(name = "height", nullable = false)
     private double height;
@@ -26,18 +25,19 @@ public class GarbageBin {
     @Column(name = "num_of_target_houses", nullable = false)
     private int numOfTargetHouses;
 
-    //@Column(nullable = false)
-    //private float longitude;
-//
-//    @Column(nullable = false)
-//    private float latitude;
+    //dynamic properties
+    private String status;
+
+    private double longitude;
+
+    private double latitude;
+
+    private double filledHeight;
+
+    //mappings
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
     private List<HouseHolder> houseHolders;
 
     @OneToMany(mappedBy = "garbageBin")
     private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
-
-    private float filledLevel;
-    private float filledWeight;
-    private String status;
 }
