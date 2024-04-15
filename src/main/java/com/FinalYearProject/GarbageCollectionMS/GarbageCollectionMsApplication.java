@@ -63,6 +63,7 @@ public class GarbageCollectionMsApplication {
 
 			//added from ama
 			GarbageBinDTO garbageBinDTO=new GarbageBinDTO();
+			garbageBinDTO.setId("b1");
 			garbageBinDTO.setBaseArea("fdfd");
 			garbageBinDTO.setNumOfTargetHouses(3);
 			garbageBinDTO.setHeight(3);
