@@ -9,5 +9,7 @@ import java.util.List;
 public interface GarbageBinRepo extends JpaRepository<GarbageBin,Integer> {
 
     List<GarbageBin> findByStatus(String status);
-    List<GarbageBin> findByFilledLevel(float filled_level);
+    //List<GarbageBin> findByFilledLevel(float filled_level);
+
+    GarbageBin findGarbageBinById(String id);
 }
