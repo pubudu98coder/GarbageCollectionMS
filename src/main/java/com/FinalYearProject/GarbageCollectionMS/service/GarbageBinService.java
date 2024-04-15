@@ -46,16 +46,16 @@ public class GarbageBinService {
         return garbageBinDTOs;
     }
 
-    public List<GarbageBinDTO> getFilledBinsByLevel(){
-
-        List<GarbageBin> garbageBins = garbageBinRepo.findByFilledLevel(8);
-
-        List<GarbageBinDTO> garbageBinDTOs = garbageBins.stream()
-                .map(bin -> modelMapper.map(bin, GarbageBinDTO.class))
-                .collect(Collectors.toList());
-
-        return garbageBinDTOs;
-    }
+//    public List<GarbageBinDTO> getFilledBinsByLevel(){
+//
+//        List<GarbageBin> garbageBins = garbageBinRepo.findByFilledLevel(8);
+//
+//        List<GarbageBinDTO> garbageBinDTOs = garbageBins.stream()
+//                .map(bin -> modelMapper.map(bin, GarbageBinDTO.class))
+//                .collect(Collectors.toList());
+//
+//        return garbageBinDTOs;
+//    }
 
 
     public GarbageBin addBinDetails(GarbageBinDTO garbageBinDTO){
@@ -69,4 +69,13 @@ public class GarbageBinService {
         return garbageBinRepo.save(garbageBin);
     }
 
+    //method to input iot data
+    public void inputIOTData(String id,double filledHeight,double longitude,double latitude){
+        GarbageBin garbageBin= garbageBinRepo.findGarbageBinById(id);
+        garbageBin.setFilledHeight(filledHeight);
+        garbageBin.setLongitude(longitude);
+        garbageBin.setLatitude(latitude);
+
+        garbageBinRepo.save(garbageBin);
+    }
 }
