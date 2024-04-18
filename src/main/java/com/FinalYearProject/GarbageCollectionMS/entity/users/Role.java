@@ -17,18 +17,18 @@ public enum Role {
             ADMIN_READ,
             ADMIN_UPDATE,
             ADMIN_CREATE,
-            ADMIN_DELETE,
-            SUPERVISOR_READ,
-            SUPERVISOR_UPDATE,
-            SUPERVISOR_CREATE,
-            SUPERVISOR_DELETE
+            ADMIN_DELETE  //,
+//            SUPERVISOR_READ,
+//            SUPERVISOR_UPDATE,
+//            SUPERVISOR_CREATE,
+//            SUPERVISOR_DELETE
     )),
-    SUPERVISOR(Set.of(
-            SUPERVISOR_READ,
-            SUPERVISOR_UPDATE,
-            SUPERVISOR_CREATE,
-            SUPERVISOR_DELETE
-    )),
+//    SUPERVISOR(Set.of(
+//            SUPERVISOR_READ,
+//            SUPERVISOR_UPDATE,
+//            SUPERVISOR_CREATE,
+//            SUPERVISOR_DELETE
+//    )),
     HOUSEHOLDER(Set.of(
             HOUSEHOLDER_READ,
             HOUSEHOLDER_UPDATE,
