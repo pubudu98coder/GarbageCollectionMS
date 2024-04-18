@@ -14,6 +14,7 @@ import java.util.List;
 public class GarbageBin {
 
     @Id
+    @Column(unique = true)
     private String id;
 
     @Column(name = "height", nullable = false)
