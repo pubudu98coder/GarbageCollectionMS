@@ -16,7 +16,6 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static com.FinalYearProject.GarbageCollectionMS.entity.users.Permission.*;
 import static com.FinalYearProject.GarbageCollectionMS.entity.users.Role.ADMIN;
-import static com.FinalYearProject.GarbageCollectionMS.entity.users.Role.SUPERVISOR;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpMethod.DELETE;
 
@@ -38,11 +37,11 @@ public class SecurityConfiguration {
                                 .requestMatchers("/api/v1/auth/**")
                                 .permitAll()
 
-                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), SUPERVISOR.name())
-                                .requestMatchers(GET,"/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(),SUPERVISOR_READ.name())
-                                .requestMatchers(POST,"/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(),SUPERVISOR_CREATE.name())
-                                .requestMatchers(PUT,"/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(),SUPERVISOR_UPDATE.name())
-                                .requestMatchers(DELETE,"/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(),SUPERVISOR_DELETE.name())
+//                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), SUPERVISOR.name())
+//                                .requestMatchers(GET,"/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(),SUPERVISOR_READ.name())
+//                                .requestMatchers(POST,"/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(),SUPERVISOR_CREATE.name())
+//                                .requestMatchers(PUT,"/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(),SUPERVISOR_UPDATE.name())
+//                                .requestMatchers(DELETE,"/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(),SUPERVISOR_DELETE.name())
 
 //                                .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())
 //                                .requestMatchers(GET,"/api/v1/admin/**").hasAuthority(ADMIN_READ.name())
