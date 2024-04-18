@@ -25,6 +25,7 @@ public class HouseHolder extends User {
     //@Column(nullable = false)
     private float latitude;
     private String houseNo;
+    private boolean approved;
     @ManyToOne
     @JoinColumn(name = "garbageBinID",referencedColumnName = "id")
     private GarbageBin garbageBin;
