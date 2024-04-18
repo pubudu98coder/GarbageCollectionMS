@@ -4,7 +4,7 @@ import  com.FinalYearProject.GarbageCollectionMS.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.*;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Supervisor;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Supervisor;
 import com.FinalYearProject.GarbageCollectionMS.repo.*;
 import com.FinalYearProject.GarbageCollectionMS.token.Token;
 import com.FinalYearProject.GarbageCollectionMS.token.TokenType;
@@ -33,17 +33,17 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request){
         User user=null;
-        if(request.getRole()== Role.SUPERVISOR){
-            user=new Supervisor();
-            user.setFirstName(request.getFirstName());
-            user.setLastName(request.getLastName());
-            user.setEmail(request.getEmail());
-            user.setNicNo(request.getNicNo());
-            user.setPassword(passwordEncoder.encode(request.getPassword()));
-            user.setRole(request.getRole());
-
-            supervisorRepository.save((Supervisor) user);
-        }
+//        if(request.getRole()== Role.SUPERVISOR){
+//            user=new Supervisor();
+//            user.setFirstName(request.getFirstName());
+//            user.setLastName(request.getLastName());
+//            user.setEmail(request.getEmail());
+//            user.setNicNo(request.getNicNo());
+//            user.setPassword(passwordEncoder.encode(request.getPassword()));
+//            user.setRole(request.getRole());
+//
+//            supervisorRepository.save((Supervisor) user);
+//        }
         if(request.getRole()== Role.HOUSEHOLDER){
             user=new HouseHolder();
             user.setFirstName(request.getFirstName());
@@ -85,7 +85,7 @@ public class AuthenticationService {
         var refreshToken=jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user,jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).role(user.getRole()).build();
     }
     public AuthenticationResponse authenticate(AuthenticationRequest request){
         authenticationManager.authenticate(

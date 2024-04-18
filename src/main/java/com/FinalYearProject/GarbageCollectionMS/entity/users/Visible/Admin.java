@@ -1,17 +1,20 @@
 package com.FinalYearProject.GarbageCollectionMS.entity.users.Visible;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @PrimaryKeyJoinColumn
-public class Supervisor extends User {
-    private String empNumber;
+public class Admin extends User {
+    private String adNo;
 }
