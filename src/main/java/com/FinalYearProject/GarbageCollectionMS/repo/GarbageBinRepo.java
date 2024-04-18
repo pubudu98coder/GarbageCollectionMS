@@ -12,4 +12,7 @@ public interface GarbageBinRepo extends JpaRepository<GarbageBin,Integer> {
     //List<GarbageBin> findByFilledLevel(float filled_level);
 
     GarbageBin findGarbageBinById(String id);
+
+
+    boolean existsById(String id);
 }
