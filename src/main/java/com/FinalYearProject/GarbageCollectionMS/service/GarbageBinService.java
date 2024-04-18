@@ -3,6 +3,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.repo.GarbageBinRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,15 +59,22 @@ public class GarbageBinService {
 //    }
 
 
-    public GarbageBin addBinDetails(GarbageBinDTO garbageBinDTO){
-//        BinDetails binDetails = new BinDetails();
-//
-//        binDetails.setHeight(addbinDetailsDTO.getHeight());
-//        binDetails.setBaseArea(addbinDetailsDTO.getBaseArea());
-//        binDetails.setNumOfTargetHouses(addbinDetailsDTO.getNumOfTargetHouses());
-          GarbageBin garbageBin=modelMapper.map(garbageBinDTO,GarbageBin.class);
+    public String addBinDetails(GarbageBinDTO garbageBinDTO){
+        GarbageBin garbageBin=modelMapper.map(garbageBinDTO,GarbageBin.class);
+        if(!garbageBinRepo.existsById(garbageBinDTO.getId())) {
+            garbageBinRepo.save(garbageBin);
+            return VarList.RSP_SUCCESS;
+        }
+        else
+            return VarList.RSP_DUPLICATED;
 
-        return garbageBinRepo.save(garbageBin);
+//        try{
+//            garbageBinRepo.save(garbageBin);
+//            return VarList.RSP_SUCCESS;
+//        }
+//        catch (Exception e){
+//            return e.getMessage();
+//        }
     }
 
     //method to input iot data
