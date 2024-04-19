@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class HouseHolderDTO {
-    private int id;
-    private String fName;
-    private String lName;
-    private String userName;
-    private String password;
-    private String email;
+    private String firstName;
+    private String lastName;
+    private String nicNo;
     private String address;
-    private float longitude;
-    private float latitude;
+    private String email;
+    private String mobileNo;
+    private String houseNo;
+    private String password;
 }
