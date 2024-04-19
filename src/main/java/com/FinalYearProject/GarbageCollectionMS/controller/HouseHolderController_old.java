@@ -19,33 +19,33 @@ public class HouseHolderController_old {
     private HouseHolderService houseHolderService;
     @Autowired
     private ResponseDTO responseDTO;
-    @PostMapping(value = "/add")
-    public ResponseEntity addHouseHolder(@RequestBody HouseHolderDTO houseHolderDTO){
-        try{
-            String res=houseHolderService.addHouseHolder(houseHolderDTO);
-            if(res.equals("00")){
-                responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Success");
-                responseDTO.setContent(houseHolderDTO);
-                return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
-            } else if (res.equals("06")) {
-                responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Allready added");
-                responseDTO.setContent(null);
-                return new ResponseEntity(responseDTO, HttpStatus.BAD_REQUEST);
-            }
-            else{
-                responseDTO.setCode(VarList.RSP_FAIL);
-                responseDTO.setMessage("Error");
-                responseDTO.setContent(null);
-                return new ResponseEntity(responseDTO, HttpStatus.BAD_REQUEST);
-            }
-        }catch (Exception ex){
-            responseDTO.setCode(VarList.RSP_ERROR);
-            responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent(null);
-            return new ResponseEntity(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @PostMapping(value = "/add")
+//    public ResponseEntity addHouseHolder(@RequestBody HouseHolderDTO houseHolderDTO){
+//        try{
+//            String res=houseHolderService.addHouseHolder(houseHolderDTO);
+//            if(res.equals("00")){
+//                responseDTO.setCode(VarList.RSP_SUCCESS);
+//                responseDTO.setMessage("Success");
+//                responseDTO.setContent(houseHolderDTO);
+//                return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+//            } else if (res.equals("06")) {
+//                responseDTO.setCode(VarList.RSP_DUPLICATED);
+//                responseDTO.setMessage("Allready added");
+//                responseDTO.setContent(null);
+//                return new ResponseEntity(responseDTO, HttpStatus.BAD_REQUEST);
+//            }
+//            else{
+//                responseDTO.setCode(VarList.RSP_FAIL);
+//                responseDTO.setMessage("Error");
+//                responseDTO.setContent(null);
+//                return new ResponseEntity(responseDTO, HttpStatus.BAD_REQUEST);
+//            }
+//        }catch (Exception ex){
+//            responseDTO.setCode(VarList.RSP_ERROR);
+//            responseDTO.setMessage(ex.getMessage());
+//            responseDTO.setContent(null);
+//            return new ResponseEntity(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
 }
