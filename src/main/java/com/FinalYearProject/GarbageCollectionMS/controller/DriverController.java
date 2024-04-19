@@ -17,13 +17,6 @@ public class DriverController {
     @Autowired
     private DriverService driverService;
 
-    @PostMapping(value = "/addDriver")
-    public Driver addDriver(@RequestBody DriverDTO addDriverDTO){
-
-
-        return driverService.addDriver(addDriverDTO);
-    }
-
 
     @GetMapping(value = "/availableDrivers")
     public List<DriverDTO> availableTrucks(){
