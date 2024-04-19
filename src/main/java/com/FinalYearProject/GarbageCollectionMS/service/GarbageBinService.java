@@ -67,15 +67,8 @@ public class GarbageBinService {
         }
         else
             return VarList.RSP_DUPLICATED;
-
-//        try{
-//            garbageBinRepo.save(garbageBin);
-//            return VarList.RSP_SUCCESS;
-//        }
-//        catch (Exception e){
-//            return e.getMessage();
-//        }
     }
+
 
     //method to input iot data
     public void inputIOTData(String id,double filledHeight,double longitude,double latitude){
