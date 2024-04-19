@@ -12,13 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @PrimaryKeyJoinColumn//(name = "driver_id")
 public class Driver extends User {
-    private String licence_no;
-
-
-    @Column(nullable = false)
+    private String licenceNo;
+    //@Column(nullable = false)
     private String empNumber;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String status;
 
     @OneToMany(mappedBy = "driver")
