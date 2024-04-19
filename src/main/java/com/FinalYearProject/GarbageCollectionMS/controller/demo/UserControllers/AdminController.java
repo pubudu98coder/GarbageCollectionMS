@@ -3,10 +3,12 @@ package com.FinalYearProject.GarbageCollectionMS.controller.demo.UserControllers
 import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationResponse;
 import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.*;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
+import com.FinalYearProject.GarbageCollectionMS.service.AdminService;
+import com.FinalYearProject.GarbageCollectionMS.service.DriverService;
 import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
+import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,12 @@ public class AdminController {
 
     @Autowired
     private ResponseDTO responseDTO;
+    @Autowired
+    private HouseHolderService houseHolderService;
+    @Autowired
+    private AdminService adminService;
+    @Autowired
+    private DriverService driverService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('admin:read')")
@@ -83,8 +91,67 @@ public class AdminController {
 
     @PostMapping(value="/registerAdmin")
     @PreAuthorize("hasAnyAuthority('admin:create')")
-    public ResponseEntity<AuthenticationResponse> registerAdmin(@RequestBody RegisterRequest request){
-        return ResponseEntity.ok(authenticationService.register(request));
+    public ResponseEntity<ResponseDTO> registerAdmin(@RequestBody AdminDTO adminDTO){
+        try{
+            String res=adminService.registerAdmin(adminDTO);
+            if(res.equals("00")){
+                responseDTO.setCode(VarList.RSP_SUCCESS);
+                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setContent(adminDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+            }
+            else if(res.equals("06")){
+                responseDTO.setCode(VarList.RSP_DUPLICATED);
+                responseDTO.setMessage("Allready added");
+                responseDTO.setContent(adminDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
+            }
+            else {
+                responseDTO.setCode(VarList.RSP_ERROR);
+                responseDTO.setMessage("Error");
+                responseDTO.setContent(adminDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+            }
+        }
+        catch (Exception ex){
+            responseDTO.setCode(VarList.RSP_ERROR);
+            responseDTO.setMessage(ex.getMessage());
+            responseDTO.setContent(null);
+            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //Driver
+    @PostMapping(value="/registerDriver")
+    @PreAuthorize("hasAnyAuthority('admin:create')")
+    public ResponseEntity<ResponseDTO> registerDriver(@RequestBody DriverDTO driverDTO){
+        try{
+            String res=driverService.registerDriver(driverDTO);
+            if(res.equals("00")){
+                responseDTO.setCode(VarList.RSP_SUCCESS);
+                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setContent(driverDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+            }
+            else if(res.equals("06")){
+                responseDTO.setCode(VarList.RSP_DUPLICATED);
+                responseDTO.setMessage("Allready added");
+                responseDTO.setContent(driverDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
+            }
+            else {
+                responseDTO.setCode(VarList.RSP_ERROR);
+                responseDTO.setMessage("Error");
+                responseDTO.setContent(driverDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+            }
+        }
+        catch (Exception ex){
+            responseDTO.setCode(VarList.RSP_ERROR);
+            responseDTO.setMessage(ex.getMessage());
+            responseDTO.setContent(null);
+            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
