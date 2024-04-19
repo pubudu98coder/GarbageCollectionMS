@@ -1,45 +1,20 @@
 package com.FinalYearProject.GarbageCollectionMS.dto;
 
 import jakarta.persistence.Column;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class DriverDTO {
-
-
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String lastName;
-
-    @Column(nullable = false)
-    private String nicNumber;
-
-    @Column(nullable = false)
+    private String nicNo;
     private String address;
-
-    @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
-    private String userName;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
+    private String mobileNo;
     private String empNumber;
-
-    @Column(nullable = false)
-    private String dlNumber;
-
-    @Column(nullable = false)
-    private String status;
-
+    private String licenceNo;
+    private String password;
 
 }
