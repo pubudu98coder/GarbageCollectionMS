@@ -20,10 +20,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @PrimaryKeyJoinColumn//(name = "houseHolder_id")
 public class HouseHolder extends User {
-    //@Column(nullable = false)
-    private float longitude;
-    //@Column(nullable = false)
-    private float latitude;
+//    //@Column(nullable = false)
+//    private float longitude;
+//    //@Column(nullable = false)
+//    private float latitude;
     private String houseNo;
     private boolean approved;
     @ManyToOne
