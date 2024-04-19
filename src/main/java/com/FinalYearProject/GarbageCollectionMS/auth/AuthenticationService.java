@@ -103,7 +103,7 @@ public class AuthenticationService {
         return AuthenticationResponse.builder().accessToken(accessToken).refreshToken(refreshToken).role(user.getRole()).build();
     }
 
-    private void saveUserToken(User user, String jwtToken) {
+    public void saveUserToken(User user, String jwtToken) {//changed access modifier to public
         var token = Token.builder()
                 .user(user)
                 .token(jwtToken)
@@ -114,7 +114,7 @@ public class AuthenticationService {
         tokenRepository.save(token);
     }
 
-    private void revokeAllUserTokens(User user) {
+    public void revokeAllUserTokens(User user) {//changed access modifier to public
         var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
         if (validUserTokens.isEmpty())
             return;
