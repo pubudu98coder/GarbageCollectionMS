@@ -1,48 +1,67 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
+import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
+import com.FinalYearProject.GarbageCollectionMS.config.JwtService;
+import com.FinalYearProject.GarbageCollectionMS.dto.AdminDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Admin;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
+import com.FinalYearProject.GarbageCollectionMS.repo.AdminRepository;
 import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepo;
+import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepository;
+import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.FinalYearProject.GarbageCollectionMS.entity.users.Role.ADMIN;
+import static com.FinalYearProject.GarbageCollectionMS.entity.users.Role.DRIVER;
+
 @Service
 @Transactional
-
+@RequiredArgsConstructor
 public class DriverService {
-
     @Autowired
     private DriverRepo driverRepo;
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public Driver addDriver(DriverDTO addDriverDTO){
+    //registering driver
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationService authenticationService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private DriverRepository driverRepository;
 
-        Driver driver = new Driver();
-
-        driver.setFirstName(addDriverDTO.getFirstName());
-        driver.setLastName(addDriverDTO.getLastName());
-        driver.setNicNo(addDriverDTO.getNicNumber());
-        driver.setAddress(addDriverDTO.getAddress());
-        driver.setEmail(addDriverDTO.getEmail());
-        //driver.setUserName(addDriverDTO.getUserName());
-        driver.setPassword(addDriverDTO.getPassword());
-        driver.setEmpNumber(addDriverDTO.getEmpNumber());
-        driver.setStatus(addDriverDTO.getStatus());
-
-
-
-        return driverRepo.save(driver);
-
+    public String registerDriver(DriverDTO driverDTO){
+        if(userRepository.existsByNicNo(driverDTO.getNicNo())){
+            return VarList.RSP_DUPLICATED;
+        }
+        else{
+            Driver driver =modelMapper.map(driverDTO, Driver.class);
+            driver.setPassword(passwordEncoder.encode(driverDTO.getPassword()));
+            driver.setRole(DRIVER);
+            driverRepository.save(driver);
+            //
+            User user=driver;
+            var jwtToken=jwtService.generateToken(user);
+            jwtService.generateRefreshToken(user);
+            authenticationService.revokeAllUserTokens(user);
+            authenticationService.saveUserToken(user,jwtToken);
+            return VarList.RSP_SUCCESS;
+        }
     }
-
-
     public List<DriverDTO> availableDrivers(){
 
         List<Driver> drivers = driverRepo.findByStatus("available");
