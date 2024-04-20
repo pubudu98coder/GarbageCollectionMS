@@ -1,5 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
+import com.FinalYearProject.GarbageCollectionMS.util.TruckType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,7 +15,7 @@ public class Truck {
     @GeneratedValue
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String regNumber;
 
     @Column(nullable = false)
@@ -23,5 +24,6 @@ public class Truck {
     @Column(nullable = false)
     private String status;
 
-
+    @Column(nullable = false)
+    private TruckType type;
 }
