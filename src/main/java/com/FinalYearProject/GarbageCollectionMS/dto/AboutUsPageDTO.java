@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AboutUsPageDTO {
     private int id;
-    private String content;
+    private String contents;
     private String selectedImage;
 }
