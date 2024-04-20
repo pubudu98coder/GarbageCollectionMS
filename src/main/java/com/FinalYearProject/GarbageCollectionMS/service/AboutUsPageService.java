@@ -7,6 +7,7 @@ import com.FinalYearProject.GarbageCollectionMS.entity.AboutUsPage;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
 import com.FinalYearProject.GarbageCollectionMS.repo.AboutUsPageRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,18 @@ public class AboutUsPageService {
     @Autowired
     private AboutUsPageRepo aboutUsPageRepo;
 
-    public AboutUsPage addAboutUsData(AboutUsPageDTO aboutUsPageDTO){
+//    public AboutUsPage addAboutUsData(AboutUsPageDTO aboutUsPageDTO){
+//
+//        AboutUsPage aboutUsPage = modelMapper.map(aboutUsPageDTO,AboutUsPage.class);
+//
+//        return aboutUsPageRepo.save(aboutUsPage);
+//
+//    }
+    public String addAboutUsData(AboutUsPageDTO aboutUsPageDTO){
 
         AboutUsPage aboutUsPage = modelMapper.map(aboutUsPageDTO,AboutUsPage.class);
-
-        return aboutUsPageRepo.save(aboutUsPage);
+        aboutUsPageRepo.save(aboutUsPage);
+        return VarList.RSP_SUCCESS;
 
     }
 
