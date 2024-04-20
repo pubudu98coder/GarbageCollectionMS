@@ -62,6 +62,9 @@ public class GarbageBinService {
     public String addBinDetails(GarbageBinDTO garbageBinDTO){
         GarbageBin garbageBin=modelMapper.map(garbageBinDTO,GarbageBin.class);
         if(!garbageBinRepo.existsById(garbageBinDTO.getId())) {
+            if (garbageBinDTO.getLocationType().equals("Residence")){
+                garbageBin.setNumOfHouses(garbageBinDTO.getNumOfHouses());
+            }
             garbageBinRepo.save(garbageBin);
             return VarList.RSP_SUCCESS;
         }
