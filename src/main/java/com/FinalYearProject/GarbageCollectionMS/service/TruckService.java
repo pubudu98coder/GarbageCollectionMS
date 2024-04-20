@@ -5,6 +5,7 @@ import com.FinalYearProject.GarbageCollectionMS.dto.TruckDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
 import com.FinalYearProject.GarbageCollectionMS.repo.TruckRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,22 @@ public class TruckService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Truck addTruck(TruckDTO truckDTO){
+    public String addTruck(TruckDTO truckDTO){
+        if(truckRepo.existsByRegNumber(truckDTO.getRegNumber())){
+            return VarList.RSP_DUPLICATED;
+        }
+        else {
+            truckRepo.save(modelMapper.map(truckDTO,Truck.class));
+            return VarList.RSP_SUCCESS;
+        }
 
-        Truck truck = new Truck();
+//        Truck truck = new Truck();
+//
+//        truck.setRegNumber(truckDTO.getRegNumber());
+//        truck.setCapacity(truckDTO.getCapacity());
+//        truck.setStatus(truckDTO.getStatus());
+//        return truckRepo.save(truck);
 
-        truck.setRegNumber(truckDTO.getRegNumber());
-        truck.setCapacity(truckDTO.getCapacity());
-        truck.setStatus(truckDTO.getStatus());
-
-        return truckRepo.save(truck);
 
     }
 
