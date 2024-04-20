@@ -17,14 +17,20 @@ public class GarbageBin {
     @Column(unique = true)
     private String id;
 
-    @Column(name = "height", nullable = false)
-    private double height;
+    @Column(name = "location_type", nullable = false)
+    private String locationType;
 
-    @Column(name = "base_area", nullable = false)
-    private String baseArea;
+    @Column(name = "line_address", nullable = false)
+    private String lineAddress;
 
-    @Column(name = "num_of_target_houses", nullable = false)
-    private int numOfTargetHouses;
+    @Column(name = "city", nullable = false)
+    private String city;
+
+    @Column(name = "type_of_waste", nullable = false)
+    private String typeOfWaste;
+
+    @Column(name = "num_of_houses", nullable = false)
+    private int numOfHouses;
 
     //dynamic properties
     private String status;
