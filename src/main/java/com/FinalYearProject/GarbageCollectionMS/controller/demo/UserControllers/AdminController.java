@@ -34,6 +34,10 @@ public class AdminController {
     private DriverService driverService;
     @Autowired
     private TruckService truckService;
+    @Autowired
+    private NewsPageService newsPageService;
+    @Autowired
+    private AboutUsPageService aboutUsPageService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('admin:read')")
@@ -173,6 +177,56 @@ public class AdminController {
                 responseDTO.setCode(VarList.RSP_ERROR);
                 responseDTO.setMessage("Error");
                 responseDTO.setContent(truckDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception ex){
+            responseDTO.setCode(VarList.RSP_ERROR);
+            responseDTO.setMessage(ex.getMessage());
+            responseDTO.setContent(null);
+            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    @PostMapping(value = "/aboutUsPage/add")
+    @PreAuthorize("hasAnyAuthority('admin:create')")
+    public ResponseEntity<ResponseDTO> addAboutUsData(@RequestBody AboutUsPageDTO aboutUsPageDTO){
+        try{
+            String res=aboutUsPageService.addAboutUsData(aboutUsPageDTO);
+            if(res.equals("00")){
+                responseDTO.setCode(VarList.RSP_SUCCESS);
+                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setContent(aboutUsPageDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+            }
+            else {
+                responseDTO.setCode(VarList.RSP_ERROR);
+                responseDTO.setMessage("Error");
+                responseDTO.setContent(aboutUsPageDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception ex){
+            responseDTO.setCode(VarList.RSP_ERROR);
+            responseDTO.setMessage(ex.getMessage());
+            responseDTO.setContent(null);
+            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    @PostMapping(value = "/newsPage/add")
+    @PreAuthorize("hasAnyAuthority('admin:create')")
+    public ResponseEntity<ResponseDTO> addNewsPageData(@RequestBody NewsPageDTO newsPageDTO){
+        try{
+            String res=newsPageService.addNewsPageData(newsPageDTO);
+            if(res.equals("00")){
+                responseDTO.setCode(VarList.RSP_SUCCESS);
+                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setContent(newsPageDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+            }
+            else {
+                responseDTO.setCode(VarList.RSP_ERROR);
+                responseDTO.setMessage("Error");
+                responseDTO.setContent(newsPageDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
             }
         }catch (Exception ex){
