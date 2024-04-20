@@ -5,10 +5,7 @@ import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
 import com.FinalYearProject.GarbageCollectionMS.dto.*;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
-import com.FinalYearProject.GarbageCollectionMS.service.AdminService;
-import com.FinalYearProject.GarbageCollectionMS.service.DriverService;
-import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
-import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
+import com.FinalYearProject.GarbageCollectionMS.service.*;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +32,8 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private DriverService driverService;
+    @Autowired
+    private TruckService truckService;
 
     @GetMapping
     @PreAuthorize("hasAuthority('admin:read')")
@@ -123,7 +122,7 @@ public class AdminController {
 
     //Driver
     @PostMapping(value="/registerDriver")
-    @PreAuthorize("hasAnyAuthority('admin:create')")
+    @PreAuthorize("hasAuthority('admin:create')")
     public ResponseEntity<ResponseDTO> registerDriver(@RequestBody DriverDTO driverDTO){
         try{
             String res=driverService.registerDriver(driverDTO);
@@ -152,6 +151,37 @@ public class AdminController {
             responseDTO.setContent(null);
             return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @PostMapping(value = "/truck/add")
+    @PreAuthorize("hasAnyAuthority('admin:create')")
+    public ResponseEntity<ResponseDTO> addTruck(@RequestBody TruckDTO truckDTO){
+        try{
+            String res=truckService.addTruck(truckDTO);
+            if(res.equals("00")){
+                responseDTO.setCode(VarList.RSP_SUCCESS);
+                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setContent(truckDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+            }
+            else if(res.equals("06")){
+                responseDTO.setCode(VarList.RSP_DUPLICATED);
+                responseDTO.setMessage("Allready added");
+                responseDTO.setContent(truckDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
+            }
+            else {
+                responseDTO.setCode(VarList.RSP_ERROR);
+                responseDTO.setMessage("Error");
+                responseDTO.setContent(truckDTO);
+                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception ex){
+            responseDTO.setCode(VarList.RSP_ERROR);
+            responseDTO.setMessage(ex.getMessage());
+            responseDTO.setContent(null);
+            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
 }
