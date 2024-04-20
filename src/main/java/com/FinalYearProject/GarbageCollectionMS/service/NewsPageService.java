@@ -3,6 +3,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 import com.FinalYearProject.GarbageCollectionMS.dto.NewsPageDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.NewsPage;
 import com.FinalYearProject.GarbageCollectionMS.repo.NewsPageRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,12 @@ public class NewsPageService {
 
     @Autowired
     private NewsPageRepo newsPageRepo;
+
+    public String addNewsPageData(NewsPageDTO newsPageDTO){
+        NewsPage newsPage = modelMapper.map(newsPageDTO,NewsPage.class);
+        newsPageRepo.save(newsPage);
+        return VarList.RSP_SUCCESS;
+    }
 
     public List<NewsPageDTO> getNewsData(){
         List<NewsPage>newsPages=newsPageRepo.findAll();
