@@ -18,12 +18,12 @@ public class TruckController {
     @Autowired
     private TruckService truckService;
 
-    @PostMapping(value = "/addTruck")
-    public Truck addTruck(@RequestBody TruckDTO truckDTO){
-
-
-        return truckService.addTruck(truckDTO);
-    }
+//    @PostMapping(value = "/addTruck")
+//    public Truck addTruck(@RequestBody TruckDTO truckDTO){
+//
+//
+//        return truckService.addTruck(truckDTO);
+//    }
 
     @GetMapping(value = "/availableTrucks")
     public List<TruckDTO> availableVehicles(){
