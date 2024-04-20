@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/api/NewsPage")
+@RequestMapping(value="/api/newsPage")
 @CrossOrigin
 
 
@@ -19,8 +19,10 @@ public class NewsPageController {
     @Autowired
     private NewsPageService newsPageService;
 
-    @GetMapping(value = "/viewNewsdata")
-    public List<NewsPageDTO> viewNewsdata() {
+
+
+    @GetMapping(value = "/viewData")
+    public List<NewsPageDTO> viewData() {
 
         return newsPageService.getNewsData();
 
