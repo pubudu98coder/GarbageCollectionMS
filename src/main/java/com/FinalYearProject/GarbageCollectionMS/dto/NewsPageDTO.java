@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class NewsPageDTO {
     private int id;
-    private String newsCatergory;
+    private String category;
     private String newsTitle;
-    private String newsDetails;
-    private String image;
+    private String details;
+    private String selectedImage;
 }
