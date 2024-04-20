@@ -14,11 +14,12 @@ import lombok.NoArgsConstructor;
 public class NewsPage {
     @Id
     @GeneratedValue
+    private int id;
 
-    private String newsCatergory;
+    private String category;
     private String newsTitle;
-    private String newsDetails;
-    private String image;
+    private String details;
+    private String selectedImage;
 
 }
 
