@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1/auth/AboutUsPage")
+@RequestMapping(value = "/api/v1/auth/aboutUsPage")
 @CrossOrigin
 
 
@@ -25,9 +25,9 @@ public class AboutUsPageController {
         return aboutUsPageService.getAboutUsData();
     }
 
-    @PostMapping(value = "/addAboutUsData")
-    public AboutUsPage addAboutUsPageData(@RequestBody AboutUsPageDTO addAboutUsPageDTO){
-
-        return aboutUsPageService.addAboutUsData(addAboutUsPageDTO);
-    }
+//    @PostMapping(value = "/addAboutUsData")
+//    public AboutUsPage addAboutUsPageData(@RequestBody AboutUsPageDTO addAboutUsPageDTO){
+//
+//        return aboutUsPageService.addAboutUsData(addAboutUsPageDTO);
+//    }
 }
