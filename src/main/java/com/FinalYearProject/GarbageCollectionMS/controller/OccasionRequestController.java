@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "api/v1/auth/OccasionRequest")
+@RequestMapping(value = "api/v1/auth/occasionRequest")
 @CrossOrigin
 public class OccasionRequestController {
     @Autowired
     private OccasionRequestService occasionRequestService;
 
-    @PostMapping(value = "/addRequest")
+    @PostMapping(value = "/add")
     public OccasionRequest addOccasionRequest(@RequestBody OccasionRequestDTO addOccasionRequestDTO){
 
         return occasionRequestService.addOccasionRequest(addOccasionRequestDTO);
