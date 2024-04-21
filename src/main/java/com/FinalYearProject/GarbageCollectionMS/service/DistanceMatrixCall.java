@@ -48,7 +48,7 @@ public class DistanceMatrixCall {
             GarbageBin bin1 = binList.get(i);
             for (int j = i + 1; j < binList.size(); j++) {
                 GarbageBin bin2 = binList.get(j);
-                long distance = distanceMatrixAPI.getData(bin1.getLatitude(), bin1.getLongitude(), bin2.getLatitude(), bin2.getLongitude());
+                long distance = distanceMatrixAPI.getData((float) bin1.getLatitude(), (float) bin1.getLongitude(), (float) bin2.getLatitude(), (float) bin2.getLongitude());
                 matrix[i][j] = distance;
                 matrix[j][i] = distance;
             }

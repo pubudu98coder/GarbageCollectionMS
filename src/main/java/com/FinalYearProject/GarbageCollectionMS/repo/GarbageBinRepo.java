@@ -16,8 +16,8 @@ public interface GarbageBinRepo extends JpaRepository<GarbageBin,Integer> {
     List<GarbageBin> findByStatusIn(List<String> statuses);
     //List<GarbageBin> findByFilledLevel(float filled_level);
 
-    GarbageBin findGarbageBinById(String id);
+    GarbageBin findGarbageBinById(int id);
 
 
-    boolean existsById(String id);
+    //boolean existsById(String id);
 }

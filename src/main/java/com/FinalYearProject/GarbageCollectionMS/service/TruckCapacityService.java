@@ -34,7 +34,7 @@ public class TruckCapacityService {
         for (int i = 0; i < availableTrucks.size(); i++) {
             Truck truck = availableTrucks.get(i);
             truckInfoArray[i][0] = truck.getId(); // Store truck ID
-            truckInfoArray[i][1] = truck.getCapacity(); // Store truck capacity
+            truckInfoArray[i][1] = (float) truck.getCapacity(); // Store truck capacity
         }
 
         return truckInfoArray;

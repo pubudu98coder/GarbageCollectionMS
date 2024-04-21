@@ -33,7 +33,7 @@ public class GarbageBinController {
 //    }
     //to get data from iot
     @PostMapping(value="/input/{id}")
-    public void inputIOTData(@RequestBody GarbageBinIOTInput input,@PathVariable String id){
+    public void inputIOTData(@RequestBody GarbageBinIOTInput input,@PathVariable int id){
         garbageBinService.inputIOTData(id,input.getFilledHeight(),input.getLongitude(),input.getLatitude());
     }
 

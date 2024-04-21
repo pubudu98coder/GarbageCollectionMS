@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class GarbageBinDTO {
-    private String id;
+    private int id;
 
     private String locationType;
 

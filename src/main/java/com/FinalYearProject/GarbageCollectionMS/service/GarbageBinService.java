@@ -94,9 +94,9 @@ public class GarbageBinService {
 
 
     //method to input iot data
-    public void inputIOTData(String id,double filledHeight,double longitude,double latitude){
+    public void inputIOTData(int id,double filledHeight,double longitude,double latitude){
         GarbageBin garbageBin= garbageBinRepo.findGarbageBinById(id);
-        garbageBin.setFilledHeight(filledHeight);
+        garbageBin.setFilledLevel((float) filledHeight);
         garbageBin.setLongitude(longitude);
         garbageBin.setLatitude(latitude);
 
