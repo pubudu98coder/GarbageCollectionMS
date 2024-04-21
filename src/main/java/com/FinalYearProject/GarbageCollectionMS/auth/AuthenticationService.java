@@ -173,6 +173,7 @@ public void refreshToken(
                     .role(user.getRole())
                     .build();
             new ObjectMapper().writeValue(response.getOutputStream(),authResponse);
+            System.out.println(authResponse.getAccessToken());
         }
     }
 }

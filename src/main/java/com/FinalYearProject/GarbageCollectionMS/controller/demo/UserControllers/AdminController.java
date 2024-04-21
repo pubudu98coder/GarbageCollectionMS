@@ -156,6 +156,19 @@ public class AdminController {
             return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    //get all drivers
+//    @GetMapping("/getDrivers")
+//    @PreAuthorize("hasAnyAuthority('admin:read')")
+//    public ResponseEntity<ResponseDTO> getAllDrivers(
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "10") int size
+//    ){
+//        responseDTO.setCode(VarList.RSP_SUCCESS);
+//        responseDTO.setMessage("Succesfully saved");
+//        responseDTO.setContent(driverService.getAvailableDrivers(page,size));
+//        return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+//    }
+
     @PostMapping(value = "/truck/add")
     @PreAuthorize("hasAnyAuthority('admin:create')")
     public ResponseEntity<ResponseDTO> addTruck(@RequestBody TruckDTO truckDTO){
@@ -237,5 +250,6 @@ public class AdminController {
         }
 
     }
+
 
 }

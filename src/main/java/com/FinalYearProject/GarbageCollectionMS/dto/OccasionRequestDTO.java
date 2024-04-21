@@ -9,7 +9,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OccasionRequestDTO {
-
     private int id;
     private String occasionType;
     private Date date;

@@ -18,12 +18,12 @@ public class DriverController {
     private DriverService driverService;
 
 
-    @GetMapping(value = "/availableDrivers")
-    public List<DriverDTO> availableTrucks(){
-
-
-        return driverService.availableDrivers();
-    }
+//    @GetMapping(value = "/availableDrivers")
+//    public List<DriverDTO> availableTrucks(){
+//
+//
+//        return driverService.getAvailableDrivers();
+//    }
 
 
 
