@@ -14,7 +14,7 @@ import java.util.List;
 public class GarbageBin {
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "height", nullable = false)
@@ -38,6 +38,6 @@ public class GarbageBin {
     private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
 
     private float filledLevel;
-    private float filledWeight;
+    private float filledVolume;
     private String status;
 }

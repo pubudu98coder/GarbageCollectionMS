@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,6 +57,24 @@ public class GarbageBinService {
 
         return garbageBinDTOs;
     }
+
+    public float[][] getAvailableBinsIdAndFilledVolume(){
+
+        List<String> statusList = Arrays.asList("filled bin","origin");
+
+        List<GarbageBin> availableBins = garbageBinRepo.findByStatusIn(statusList);
+
+        float[][] binInfoArray = new float[availableBins.size()][2];
+
+        for (int i = 0; i < availableBins.size(); i++) {
+            GarbageBin bin = availableBins.get(i);
+            binInfoArray[i][0] = bin.getId(); // Store bin ID
+            binInfoArray[i][1] = bin.getFilledVolume(); // Store filled volume
+        }
+
+        return binInfoArray;
+    }
+
 
 
     public GarbageBin addBinDetails(GarbageBinDTO garbageBinDTO){

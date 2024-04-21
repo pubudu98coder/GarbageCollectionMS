@@ -3,6 +3,7 @@ package com.FinalYearProject.GarbageCollectionMS.controller;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.TruckDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
+import com.FinalYearProject.GarbageCollectionMS.service.TruckCapacityService;
 import com.FinalYearProject.GarbageCollectionMS.service.TruckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,14 @@ public class TruckController {
     public List<TruckDTO> availableVehicles(){
 
         return truckService.availableTrucks();
+    }
+
+    @Autowired
+    private TruckCapacityService truckCapacityService;
+    @GetMapping(value = "/availableTruckIdAndCapacity")
+    public float[][] getAvailableTrucksIdAndCapacity() {
+
+        return truckCapacityService.getAvailableTrucksIdAndCapacity();
     }
 
 

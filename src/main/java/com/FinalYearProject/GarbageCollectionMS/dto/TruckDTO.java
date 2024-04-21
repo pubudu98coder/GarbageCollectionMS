@@ -12,6 +12,8 @@ import java.util.List;
 
 public class TruckDTO {
 
+    private int id;
+
     @Column(nullable = false)
     private String regNumber;
 
@@ -21,8 +23,8 @@ public class TruckDTO {
     @Column(nullable = false)
     private String status;
 
-    private List<Route> routes;
+    //private List<Route> routes;
 
-    private List<DriverTruckLog> driverTruckLogList;
+    //private List<DriverTruckLog> driverTruckLogList;
 
 }

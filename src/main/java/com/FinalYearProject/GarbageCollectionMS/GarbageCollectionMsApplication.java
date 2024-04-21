@@ -1,5 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS;
 
+import com.FinalYearProject.GarbageCollectionMS.service.DistanceMatrixAPI;
+import com.google.maps.model.DistanceMatrixElement;
 import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
 import com.FinalYearProject.GarbageCollectionMS.dto.AboutUsPageDTO;
@@ -14,6 +16,7 @@ import com.FinalYearProject.GarbageCollectionMS.service.AboutUsPageService;
 import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseOwnerComplaintsService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

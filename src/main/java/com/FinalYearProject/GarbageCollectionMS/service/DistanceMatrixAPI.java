@@ -1,8 +1,10 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
+import org.hibernate.metamodel.internal.AbstractEntityInstantiatorPojo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,7 +15,7 @@ import java.net.http.HttpResponse;
 @Service
 public class DistanceMatrixAPI {
 
-    public String getData(Float originLatitude, Float originLongitude, Float destinationLatitude1, Float destinationLongitude1) {
+    public long getData(Float originLatitude, Float originLongitude, Float destinationLatitude1, Float destinationLongitude1) throws ParseException {
         if (originLatitude == null || originLongitude == null || destinationLatitude1 == null || destinationLongitude1 == null) {
             throw new IllegalArgumentException("Origin and destination coordinates must be provided");
         }
@@ -30,6 +32,7 @@ public class DistanceMatrixAPI {
         var request = HttpRequest.newBuilder().GET().uri(URI.create(url)).build();
         var client = HttpClient.newBuilder().build();
         String response = null;
+
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
             if (response.contains("ERROR")) {
@@ -43,7 +46,23 @@ public class DistanceMatrixAPI {
             throw new RuntimeException(e);
         }
 
-        return response;
+
+        JSONParser jp = new JSONParser();
+        JSONObject jo = (JSONObject) jp.parse(response);
+        JSONArray ja =  (JSONArray) jo.get( "rows");
+
+        jo = (JSONObject) ja.get(0);
+        ja = (JSONArray) jo.get("elements");
+        jo = (JSONObject) ja.get(0);
+        JSONObject je = (JSONObject) jo.get("distance");
+        long distance = (long) je.get("value");
+
+        return distance;
+
+
+
+
+        //return response;
     }
 
 

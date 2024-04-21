@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.entity.users;
+package com.FinalYearProject.GarbageCollectionMS.entity;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.DriverTruckLog;
 import jakarta.persistence.*;
@@ -16,6 +16,9 @@ public class Driver extends User {
 
     @Column(nullable = false)
     private String empNumber;
+
+    @Column(nullable = false)
+    private String dlNumber;
 
     @Column(nullable = false)
     private String status;

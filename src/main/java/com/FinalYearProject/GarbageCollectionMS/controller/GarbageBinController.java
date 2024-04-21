@@ -37,4 +37,11 @@ public class GarbageBinController {
 
         return garbageBinService.getFilledBinsByLevel();
     }
+
+    @GetMapping(value = "/getFilledBinIdAndVolume")
+    public float[][] getData(){
+
+        return garbageBinService.getAvailableBinsIdAndFilledVolume();
+
+    }
 }
