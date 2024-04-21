@@ -26,11 +26,11 @@ public class GarbageBin {
     @Column(name = "num_of_target_houses", nullable = false)
     private int numOfTargetHouses;
 
-    //@Column(nullable = false)
-    //private float longitude;
-//
-//    @Column(nullable = false)
-//    private float latitude;
+    @Column(nullable = false)
+    private float longitude;
+
+   @Column(nullable = false)
+    private float latitude;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
     private List<HouseHolder> houseHolders;
 
