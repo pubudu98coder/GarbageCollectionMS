@@ -36,4 +36,11 @@ public class GarbageBinController {
     public void inputIOTData(@RequestBody GarbageBinIOTInput input,@PathVariable String id){
         garbageBinService.inputIOTData(id,input.getFilledHeight(),input.getLongitude(),input.getLatitude());
     }
+
+    @GetMapping(value = "/getFilledBinIdAndVolume")
+    public float[][] getData(){
+
+        return garbageBinService.getAvailableBinsIdAndFilledVolume();
+
+    }
 }

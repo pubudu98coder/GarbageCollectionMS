@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ public class GarbageBin {
 
     @Id
     @Column(unique = true)
-    private String id;
+    private int id;
 
     @Column(name = "location_type", nullable = false)
     private String locationType;
@@ -29,17 +29,20 @@ public class GarbageBin {
     @Column(name = "type_of_waste", nullable = false)
     private String typeOfWaste;
 
+    @Column(name = "height", nullable = false)
+    private double height;
+
     @Column(name = "num_of_houses", nullable = false)
     private int numOfHouses;
 
-    //dynamic properties
-    private String status;
+    @Column(name = "base_area", nullable = false)
+    private String baseArea;
 
     private double longitude;
 
     private double latitude;
 
-    private double filledHeight;
+    //private double filledHeight;
 
     //mappings
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
@@ -47,4 +50,8 @@ public class GarbageBin {
 
     @OneToMany(mappedBy = "garbageBin")
     private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
+
+    private float filledLevel;
+    private float filledVolume;
+    private String status;
 }
