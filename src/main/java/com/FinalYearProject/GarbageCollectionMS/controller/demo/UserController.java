@@ -27,12 +27,13 @@ public class UserController {
     @GetMapping("/getDrivers")
 //    @PreAuthorize("hasAnyAuthority('admin:read')")
     public ResponseEntity<ResponseDTO> getAllDrivers(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "10") int size
     ){
         responseDTO.setCode(VarList.RSP_SUCCESS);
         responseDTO.setMessage("Succesfully saved");
-        responseDTO.setContent(driverService.getAvailableDrivers(page,size));
+        //responseDTO.setContent(driverService.getAvailableDrivers(page,size));
+        responseDTO.setContent(driverService.getAvailableDrivers());
         return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
     }
 }
