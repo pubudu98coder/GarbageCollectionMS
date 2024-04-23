@@ -69,7 +69,7 @@ public class AdminController {
                 responseDTO.setCode(VarList.RSP_ERROR);
                 responseDTO.setMessage("Error");
                 responseDTO.setContent(garbageBinDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(responseDTO, HttpStatus.CONFLICT);//need to add appropriate status code
             }
         }
         catch (Exception ex){
@@ -157,17 +157,18 @@ public class AdminController {
         }
     }
     //get all drivers
-//    @GetMapping("/getDrivers")
-//    @PreAuthorize("hasAnyAuthority('admin:read')")
-//    public ResponseEntity<ResponseDTO> getAllDrivers(
-//            @RequestParam(defaultValue = "0") int page,
-//            @RequestParam(defaultValue = "10") int size
-//    ){
-//        responseDTO.setCode(VarList.RSP_SUCCESS);
-//        responseDTO.setMessage("Succesfully saved");
-//        responseDTO.setContent(driverService.getAvailableDrivers(page,size));
-//        return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
-//    }
+    @GetMapping("/getDrivers")
+    @PreAuthorize("hasAnyAuthority('admin:read')")
+    public ResponseEntity<ResponseDTO> getAllDrivers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        responseDTO.setCode(VarList.RSP_SUCCESS);
+        responseDTO.setMessage("Succesfully saved");
+        responseDTO.setContent(driverService.getAvailableDrivers(page,size));
+        //responseDTO.setContent(driverService.getAvailableWithoutPaginationDrivers());
+        return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+    }
 
     @PostMapping(value = "/truck/add")
     @PreAuthorize("hasAnyAuthority('admin:create')")
