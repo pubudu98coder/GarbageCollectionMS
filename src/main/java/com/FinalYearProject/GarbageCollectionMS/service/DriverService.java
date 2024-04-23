@@ -2,16 +2,22 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.config.JwtService;
+import com.FinalYearProject.GarbageCollectionMS.dao.DriverDAO;
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
 import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepository;
 import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.util.DriverPageDAO;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -55,14 +61,27 @@ public class DriverService {
     }
 
     //getting driver data
-//    public Page<Driver> getAvailableDrivers(int page,int size){
+//    public List<DriverDAO> getAvailableDrivers(int page, int size){
 //        Pageable pageable= PageRequest.of(page,size);
-//        return driverRepository.findAll(pageable);
+//        int count=(int)driverRepository.count();
+//        return modelMapper.map(driverRepository.findAll(pageable).getContent(),new TypeToken<List<DriverDAO>>(){}.getType());
+//
+//
 //    }
+    public DriverPageDAO getAvailableDrivers(int page, int size){
+        Pageable pageable= PageRequest.of(page,size);
+        int count=(int)driverRepository.count();
+        return DriverPageDAO
+                .builder()
+                .driverList(modelMapper.map(driverRepository.findAll(pageable).getContent(),new TypeToken<List<DriverDAO>>(){}.getType())).count(count).build();
+
+    }
+
 
     //getting driver details without pagination
-    public List<Driver> getAvailableDrivers(){
-        return driverRepository.findAll();
+    public List<DriverDAO> getAvailableWithoutPaginationDrivers(){
+//        List<DriverDAO>
+        return modelMapper.map(driverRepository.findAll(),new TypeToken<List<DriverDAO>>(){}.getType());
     }
 
 
