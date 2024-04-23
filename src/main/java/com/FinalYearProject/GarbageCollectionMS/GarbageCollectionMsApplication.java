@@ -60,13 +60,23 @@ public class GarbageCollectionMsApplication {
 					.role(Role.HOUSEHOLDER)
 					.build();
 			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
-			HouseHolder houseHolder1=houseHolderRepository.findById(2).orElse(null);
-			houseHolder1.setHouseNo("h1");
-			houseHolderRepository.save(houseHolder1);
-			User adminG=userRepository.findById(1).orElse(null);
-			HouseHolder houseHolder2=houseHolderRepository.findByHouseNo("h1").orElse(null);
-			System.out.println(houseHolder2.getFirstName());
-			System.out.println(adminG.getFirstName());
+
+			var driver = RegisterRequest.builder()
+					.firstName("Amasha")
+					.lastName("Madara")
+					.email("ama@gmail.com")
+					.password("1234")
+					.nicNo("20001582942V")
+					.role(Role.DRIVER)
+					.build();
+			System.out.println("Driver token: " + service.register(driver).getAccessToken());
+//			HouseHolder houseHolder1=houseHolderRepository.findById(2).orElse(null);
+//			houseHolder1.setHouseNo("h1");
+//			houseHolderRepository.save(houseHolder1);
+//			User adminG=userRepository.findById(1).orElse(null);
+//			HouseHolder houseHolder2=houseHolderRepository.findByHouseNo("h1").orElse(null);
+//			System.out.println(houseHolder2.getFirstName());
+//			System.out.println(adminG.getFirstName());
 
 			//added from ama
 //			GarbageBinDTO garbageBinDTO=new GarbageBinDTO();
