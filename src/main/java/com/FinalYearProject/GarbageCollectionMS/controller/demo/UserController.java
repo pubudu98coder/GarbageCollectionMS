@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/auth/users")
-@CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")//,allowCredentials ="true"
 public class UserController {
     @Autowired
     private ResponseDTO responseDTO;
@@ -27,13 +27,13 @@ public class UserController {
     @GetMapping("/getDrivers")
 //    @PreAuthorize("hasAnyAuthority('admin:read')")
     public ResponseEntity<ResponseDTO> getAllDrivers(
-//            @RequestParam(defaultValue = "0") int page,
-//            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
     ){
         responseDTO.setCode(VarList.RSP_SUCCESS);
         responseDTO.setMessage("Succesfully saved");
-        //responseDTO.setContent(driverService.getAvailableDrivers(page,size));
-        responseDTO.setContent(driverService.getAvailableDrivers());
+        responseDTO.setContent(driverService.getAvailableDrivers(page,size));
+        //responseDTO.setContent(driverService.getAvailableWithoutPaginationDrivers());
         return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
     }
 }
