@@ -15,13 +15,10 @@ public class TruckDTO {
 
     private int id;
 
-    @Column(nullable = false)
     private String regNumber;
 
-    @Column(nullable = false)
     private float capacity;
 
-    @Column(nullable = false)
     private String status;
 
     //private List<Route> routes;
