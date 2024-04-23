@@ -29,13 +29,13 @@ public class GarbageBin {
     @Column(name = "type_of_waste", nullable = false)
     private String typeOfWaste;
 
-    @Column(name = "height", nullable = false)
+    //@Column(name = "height", nullable = false)
     private double height;
 
     @Column(name = "num_of_houses", nullable = false)
     private int numOfHouses;
 
-    @Column(name = "base_area", nullable = false)
+    //@Column(name = "base_area", nullable = false)
     private String baseArea;
 
     private double longitude;
