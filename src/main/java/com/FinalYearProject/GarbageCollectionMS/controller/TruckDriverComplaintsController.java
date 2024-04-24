@@ -20,11 +20,11 @@ public class TruckDriverComplaintsController {
     private TruckDriverComplaintsService truckDriverComplaintsService;
 
 
-    @PostMapping(value = "/addComplaints")
-    public TruckDriverComplaints addTruckDriverComplaints(@RequestBody TruckDriverComplaintsDTO addTruckDriverComplaintsDTO){
-
-        return truckDriverComplaintsService.addTruckDriverComplaints(addTruckDriverComplaintsDTO);
-    }
+//    @PostMapping(value = "/addComplaints")
+//    public TruckDriverComplaints addTruckDriverComplaints(@RequestBody TruckDriverComplaintsDTO addTruckDriverComplaintsDTO){
+//
+//        return truckDriverComplaintsService.addTruckDriverComplaints(addTruckDriverComplaintsDTO);
+//    }
 
 //    @GetMapping (value = "/viewComplaints")
 //    public List<TruckDriverComplaintsDTO> viewComplaints(){
