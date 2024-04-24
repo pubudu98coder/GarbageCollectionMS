@@ -97,19 +97,19 @@ public class GarbageCollectionMsApplication {
 			newsPageDTO.setDetails("hhh");
 			newsPageDTO.setSelectedImage("f.jpg");
 			newsPageService.addNewsPageData(newsPageDTO);
-
-			HouseOwnerComplaintsDTO houseOwnerComplaintsDTO = new HouseOwnerComplaintsDTO();
-			houseOwnerComplaintsDTO.setComplaintType("ffgd");
-			houseOwnerComplaintsDTO.setDescription("ggfgf");
-			houseOwnerComplaintsDTO.setContactNo("0776026233");
-			houseOwnerComplaintsService.addHouseOwnerComplaints(houseOwnerComplaintsDTO);
-
-			OccasionRequestDTO occasionRequestDTO = new OccasionRequestDTO();
-			occasionRequestDTO.setOccasionType("rrgr");
-			occasionRequestDTO.setDate("2024-04-05");
-			occasionRequestDTO.setContactNumber("0776026233");
-			occasionRequestDTO.setDescription("ghuh");
-			occasionRequestService.addOccasionRequest(occasionRequestDTO);
+//
+//			HouseOwnerComplaintsDTO houseOwnerComplaintsDTO = new HouseOwnerComplaintsDTO();
+//			houseOwnerComplaintsDTO.setComplaintType("ffgd");
+//			houseOwnerComplaintsDTO.setDescription("ggfgf");
+//			houseOwnerComplaintsDTO.setContactNo("0776026233");
+//			houseOwnerComplaintsService.addHouseOwnerComplaints(houseOwnerComplaintsDTO);
+//
+//			OccasionRequestDTO occasionRequestDTO = new OccasionRequestDTO();
+//			occasionRequestDTO.setOccasionType("rrgr");
+//			occasionRequestDTO.setDate("2024-04-05");
+//			occasionRequestDTO.setContactNumber("0776026233");
+//			occasionRequestDTO.setDescription("ghuh");
+//			occasionRequestService.addOccasionRequest(occasionRequestDTO);
 
 			//added from ama
 //			AboutUsPageDTO aboutUsPageDTO=new AboutUsPageDTO();
