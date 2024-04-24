@@ -8,6 +8,7 @@ import com.FinalYearProject.GarbageCollectionMS.entity.HouseOwnerComplaints;
 import com.FinalYearProject.GarbageCollectionMS.entity.TruckDriverComplaints;
 import com.FinalYearProject.GarbageCollectionMS.repo.HouseOwnerComplaintsRepo;
 import com.FinalYearProject.GarbageCollectionMS.repo.TruckDriverComplaintsRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,10 +23,11 @@ public class TruckDriverComplaintsService {
     @Autowired
     private TruckDriverComplaintsRepo truckDriverComplaintsRepo;
 
-    public TruckDriverComplaints addTruckDriverComplaints(TruckDriverComplaintsDTO truckDriverComplaintsDTO){
+    public String addTruckDriverComplaints(TruckDriverComplaintsDTO truckDriverComplaintsDTO){
         TruckDriverComplaints truckDriverComplaints = modelMapper.map(truckDriverComplaintsDTO,TruckDriverComplaints.class);
 
-        return truckDriverComplaintsRepo.save(truckDriverComplaints);
+        truckDriverComplaintsRepo.save(truckDriverComplaints);
+        return VarList.RSP_SUCCESS;
 
     }
 

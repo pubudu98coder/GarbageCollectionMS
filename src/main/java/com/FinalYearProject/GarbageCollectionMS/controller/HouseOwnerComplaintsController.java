@@ -14,9 +14,9 @@ public class HouseOwnerComplaintsController {
     @Autowired
     private HouseOwnerComplaintsService houseOwnerComplaintsService;
 
-    @PostMapping(value = "/addComplaints")
-    public HouseOwnerComplaints addHouseOwnerComplaints(@RequestBody HouseOwnerComplaintsDTO addHouseOwnerComplaintsDTO){
-
-        return houseOwnerComplaintsService.addHouseOwnerComplaints(addHouseOwnerComplaintsDTO);
-    }
+//    @PostMapping(value = "/addComplaints")
+//    public HouseOwnerComplaints addHouseOwnerComplaints(@RequestBody HouseOwnerComplaintsDTO addHouseOwnerComplaintsDTO){
+//
+//        return houseOwnerComplaintsService.addHouseOwnerComplaints(addHouseOwnerComplaintsDTO);
+//    }
 }

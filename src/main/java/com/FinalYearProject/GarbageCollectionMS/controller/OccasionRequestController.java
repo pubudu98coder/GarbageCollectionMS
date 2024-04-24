@@ -16,9 +16,9 @@ public class OccasionRequestController {
     @Autowired
     private OccasionRequestService occasionRequestService;
 
-    @PostMapping(value = "/add")
-    public OccasionRequest addOccasionRequest(@RequestBody OccasionRequestDTO addOccasionRequestDTO){
-
-        return occasionRequestService.addOccasionRequest(addOccasionRequestDTO);
-    }
+//    @PostMapping(value = "/add")
+//    public OccasionRequest addOccasionRequest(@RequestBody OccasionRequestDTO addOccasionRequestDTO){
+//
+//        return occasionRequestService.addOccasionRequest(addOccasionRequestDTO);
+//    }
 }

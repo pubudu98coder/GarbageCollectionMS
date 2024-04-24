@@ -55,15 +55,15 @@ public class AdminController {
             String res=garbageBinService.addBinDetails(garbageBinDTO);
             if(res.equals("00")){
                 responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setMessage("Successfully saved");
                 responseDTO.setContent(garbageBinDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+                return new ResponseEntity<>(responseDTO, HttpStatus.OK);
             }
             else if (res.equals("06")) {
                 responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Allready added");
+                responseDTO.setMessage("Already added");
                 responseDTO.setContent(garbageBinDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(responseDTO, HttpStatus.CONFLICT);
             }
             else {
                 responseDTO.setCode(VarList.RSP_ERROR);
@@ -99,13 +99,13 @@ public class AdminController {
             String res=adminService.registerAdmin(adminDTO);
             if(res.equals("00")){
                 responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setMessage("Successfully saved");
                 responseDTO.setContent(adminDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
             }
             else if(res.equals("06")){
                 responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Allready added");
+                responseDTO.setMessage("Already added");
                 responseDTO.setContent(adminDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
             }
@@ -132,13 +132,13 @@ public class AdminController {
             String res=driverService.registerDriver(driverDTO);
             if(res.equals("00")){
                 responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setMessage("Successfully saved");
                 responseDTO.setContent(driverDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
             }
             else if(res.equals("06")){
                 responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Allready added");
+                responseDTO.setMessage("Already added");
                 responseDTO.setContent(driverDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
             }
@@ -177,13 +177,13 @@ public class AdminController {
             String res=truckService.addTruck(truckDTO);
             if(res.equals("00")){
                 responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setMessage("Successfully saved");
                 responseDTO.setContent(truckDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
             }
             else if(res.equals("06")){
                 responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Allready added");
+                responseDTO.setMessage("Already added");
                 responseDTO.setContent(truckDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
             }
@@ -208,7 +208,7 @@ public class AdminController {
             String res=aboutUsPageService.addAboutUsData(aboutUsPageDTO);
             if(res.equals("00")){
                 responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setMessage("Successfully saved");
                 responseDTO.setContent(aboutUsPageDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
             }
@@ -233,7 +233,7 @@ public class AdminController {
             String res=newsPageService.addNewsPageData(newsPageDTO);
             if(res.equals("00")){
                 responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
+                responseDTO.setMessage("Successfully saved");
                 responseDTO.setContent(newsPageDTO);
                 return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
             }

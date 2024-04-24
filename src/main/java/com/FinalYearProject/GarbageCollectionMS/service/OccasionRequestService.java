@@ -6,6 +6,7 @@ import com.FinalYearProject.GarbageCollectionMS.entity.OccasionRequest;
 import com.FinalYearProject.GarbageCollectionMS.entity.TruckDriverComplaints;
 import com.FinalYearProject.GarbageCollectionMS.repo.OccasionRequestRepo;
 import com.FinalYearProject.GarbageCollectionMS.repo.TruckDriverComplaintsRepo;
+import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,12 @@ public class OccasionRequestService {
     @Autowired
     private OccasionRequestRepo occasionRequestRepo;
 
-    public OccasionRequest addOccasionRequest(OccasionRequestDTO occasionRequestDTO){
+    public String addOccasionRequest(OccasionRequestDTO occasionRequestDTO){
 
         OccasionRequest occasionRequest = modelMapper.map(occasionRequestDTO,OccasionRequest.class);
 
-        return occasionRequestRepo.save(occasionRequest);
+        occasionRequestRepo.save(occasionRequest);
+        return VarList.RSP_SUCCESS;
 
     }
 }
