@@ -2,7 +2,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.NewsPageDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.NewsPage;
-import com.FinalYearProject.GarbageCollectionMS.repo.NewsPageRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.NewsPageRepo;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

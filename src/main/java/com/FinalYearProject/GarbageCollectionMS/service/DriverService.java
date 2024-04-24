@@ -1,13 +1,13 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
-import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
-import com.FinalYearProject.GarbageCollectionMS.config.JwtService;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.dao.DriverDAO;
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
-import com.FinalYearProject.GarbageCollectionMS.repo.DriverRepository;
-import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.Repository.DriverRepository;
+import com.FinalYearProject.GarbageCollectionMS.Repository.UserRepository;
 import com.FinalYearProject.GarbageCollectionMS.util.DriverPageDAO;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,7 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.FinalYearProject.GarbageCollectionMS.entity.users.Role.DRIVER;
+import static com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.Role.DRIVER;
 
 @Service
 @Transactional

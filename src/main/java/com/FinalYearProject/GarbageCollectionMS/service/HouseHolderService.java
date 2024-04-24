@@ -1,14 +1,12 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
-import ch.qos.logback.classic.encoder.JsonEncoder;
-import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationResponse;
-import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
-import com.FinalYearProject.GarbageCollectionMS.config.JwtService;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
-import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
-import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.Repository.HouseHolderRepository;
+import com.FinalYearProject.GarbageCollectionMS.Repository.UserRepository;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import static com.FinalYearProject.GarbageCollectionMS.entity.users.Role.HOUSEHOLDER;
+import static com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.Role.HOUSEHOLDER;
 
 @Service
 @Transactional

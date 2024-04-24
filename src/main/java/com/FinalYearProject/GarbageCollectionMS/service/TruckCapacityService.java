@@ -1,7 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
-import com.FinalYearProject.GarbageCollectionMS.repo.TruckRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.TruckRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

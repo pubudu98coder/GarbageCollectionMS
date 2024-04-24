@@ -1,26 +1,18 @@
 package com.FinalYearProject.GarbageCollectionMS;
 
-import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
-import com.FinalYearProject.GarbageCollectionMS.auth.RegisterRequest;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.RegisterRequest;
 import com.FinalYearProject.GarbageCollectionMS.dto.AboutUsPageDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.NewsPageDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.OccasionRequestDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
-import com.FinalYearProject.GarbageCollectionMS.repo.HouseHolderRepository;
-import com.FinalYearProject.GarbageCollectionMS.repo.UserRepository;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Role;
+import com.FinalYearProject.GarbageCollectionMS.Repository.HouseHolderRepository;
+import com.FinalYearProject.GarbageCollectionMS.Repository.UserRepository;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.Role;
 import com.FinalYearProject.GarbageCollectionMS.service.*;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 @SpringBootApplication
 public class GarbageCollectionMsApplication {
@@ -39,35 +31,35 @@ public class GarbageCollectionMsApplication {
 			AuthenticationService service, HouseHolderRepository houseHolderRepository, UserRepository userRepository,GarbageBinService garbageBinService, AboutUsPageService aboutUsPageService, HouseOwnerComplaintsService houseOwnerComplaintsService, NewsPageService newsPageService, OccasionRequestService occasionRequestService
 	) {
 		return args -> {
-			var admin = RegisterRequest.builder()
-					.firstName("Pubudu")
-					.lastName("Tharaka")
-					.email("pubudu@gmail.com")
-					.password("1234")
-					.nicNo("981582942V")
-					.role(Role.ADMIN)
-					.build();
-			System.out.println("Admin token: " + service.register(admin).getAccessToken());
-
-			var driver = RegisterRequest.builder()
-					.firstName("Ama")
-					.lastName("Nirupadi")
-					.email("ama@gmail.com")
-					.password("12345")
-					.nicNo("200059470838")
-					.role(Role.DRIVER)
-					.build();
-			System.out.println("Driver token: " + service.register(driver).getAccessToken());
-
-			var houseHolder = RegisterRequest.builder()
-					.firstName("Lilanka")
-					.lastName("Sawan")
-					.email("lilanka@gmail.com")
-					.password("5678")
-					.nicNo("987474773V")
-					.role(Role.HOUSEHOLDER)
-					.build();
-			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
+//			var admin = RegisterRequest.builder()
+//					.firstName("Pubudu")
+//					.lastName("Tharaka")
+//					.email("pubudu@gmail.com")
+//					.password("1234")
+//					.nicNo("981582942V")
+//					.role(Role.ADMIN)
+//					.build();
+//			System.out.println("Admin token: " + service.register(admin).getAccessToken());
+//
+//			var driver = RegisterRequest.builder()
+//					.firstName("Ama")
+//					.lastName("Nirupadi")
+//					.email("ama@gmail.com")
+//					.password("12345")
+//					.nicNo("200059470838")
+//					.role(Role.DRIVER)
+//					.build();
+//			System.out.println("Driver token: " + service.register(driver).getAccessToken());
+//
+//			var houseHolder = RegisterRequest.builder()
+//					.firstName("Lilanka")
+//					.lastName("Sawan")
+//					.email("lilanka@gmail.com")
+//					.password("5678")
+//					.nicNo("987474773V")
+//					.role(Role.HOUSEHOLDER)
+//					.build();
+//			System.out.println("HouseHolder token: " + service.register(houseHolder).getAccessToken());
 //			HouseHolder houseHolder1=houseHolderRepository.findById(3).orElse(null);
 //			houseHolder1.setHouseNo("h1");
 //			houseHolderRepository.save(houseHolder1);

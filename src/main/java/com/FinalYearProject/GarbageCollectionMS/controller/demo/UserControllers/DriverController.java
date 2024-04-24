@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.controller.demo.UserControllers;
 
-import com.FinalYearProject.GarbageCollectionMS.auth.AuthenticationService;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.TruckDriverComplaintsDTO;
 import com.FinalYearProject.GarbageCollectionMS.service.TruckDriverComplaintsService;

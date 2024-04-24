@@ -3,11 +3,10 @@ package com.FinalYearProject.GarbageCollectionMS.entity.users.Visible;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.entity.HouseHolderNotificationLog;
 import com.FinalYearProject.GarbageCollectionMS.entity.Inquiry;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

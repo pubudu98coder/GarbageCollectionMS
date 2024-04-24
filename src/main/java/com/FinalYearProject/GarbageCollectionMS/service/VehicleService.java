@@ -2,7 +2,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.VehicleDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
-import com.FinalYearProject.GarbageCollectionMS.repo.Repo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.Repo;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

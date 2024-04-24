@@ -2,7 +2,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.HouseOwnerComplaintsDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.HouseOwnerComplaints;
-import com.FinalYearProject.GarbageCollectionMS.repo.HouseOwnerComplaintsRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.HouseOwnerComplaintsRepo;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

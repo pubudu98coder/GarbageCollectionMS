@@ -1,6 +1,6 @@
 package com.FinalYearProject.GarbageCollectionMS.entity.users;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.users.User;
+import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.AllArgsConstructor;
