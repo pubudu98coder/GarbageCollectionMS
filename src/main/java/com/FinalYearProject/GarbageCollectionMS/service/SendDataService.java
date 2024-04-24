@@ -2,7 +2,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.BinDataDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
-import com.FinalYearProject.GarbageCollectionMS.repo.GarbageBinRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

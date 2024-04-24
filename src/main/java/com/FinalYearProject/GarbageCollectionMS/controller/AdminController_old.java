@@ -34,8 +34,6 @@ public class AdminController_old {
         return distanceMatrixAPI.getData(originLatitude,originLongitude,destinationLatitude1,destinationLongitude1);
     }
 
-
-
     @Autowired
     private DistanceMatrixCall distanceMatrixCall;
 

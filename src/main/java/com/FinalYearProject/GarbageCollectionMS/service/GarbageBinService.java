@@ -2,7 +2,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
-import com.FinalYearProject.GarbageCollectionMS.repo.GarbageBinRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepo;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;

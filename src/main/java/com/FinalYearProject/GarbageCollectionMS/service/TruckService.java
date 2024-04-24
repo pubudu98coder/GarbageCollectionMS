@@ -1,10 +1,8 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.TruckDTO;
-import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.entity.Truck;
-import com.FinalYearProject.GarbageCollectionMS.repo.TruckRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.TruckRepo;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

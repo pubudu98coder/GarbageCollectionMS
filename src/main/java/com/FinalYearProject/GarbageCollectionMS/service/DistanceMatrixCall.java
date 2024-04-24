@@ -1,16 +1,10 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
-import com.FinalYearProject.GarbageCollectionMS.repo.GarbageBinRepo;
-import com.google.ortools.constraintsolver.RoutingDimension;
-import com.google.ortools.constraintsolver.RoutingIndexManager;
-import com.google.ortools.constraintsolver.SWIGTYPE_p_absl__flat_hash_setT_operations_research__RoutingModel__DimensionIndex_t;
-import org.hibernate.tool.schema.extract.spi.ForeignKeyInformation;
+import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepo;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.metadata.DataSourcePoolMetadata;
 import org.springframework.stereotype.Service;
-import com.google.ortools.Loader;
 
 import java.util.Arrays;
 import java.util.List;
