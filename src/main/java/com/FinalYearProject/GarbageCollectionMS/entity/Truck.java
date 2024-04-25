@@ -21,7 +21,7 @@ public class Truck {
     @Column(nullable = false)
     private double capacity;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String status;
 
     @Column(nullable = false)
