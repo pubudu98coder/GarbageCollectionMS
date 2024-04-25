@@ -36,7 +36,7 @@ public class GarbageBin {
     private int numOfHouses;
 
     //@Column(name = "base_area", nullable = false)
-    private String baseArea;
+    private double baseArea;
 
     private double longitude;
 
