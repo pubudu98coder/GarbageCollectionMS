@@ -1,6 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.controller;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.BinDataDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.VehicleDTO;
 import com.FinalYearProject.GarbageCollectionMS.service.*;
 import org.json.simple.parser.ParseException;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class IotController {
     @Autowired
     private VehicleService vehicleService;
+
+    @Autowired
+    private TruckRouteService truckRouteService;
 
     @PostMapping(value = "/saveVehicle")
     public VehicleDTO saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
@@ -64,4 +68,10 @@ public class IotController {
         return ResponseEntity.ok("Data uploaded successfully");
 
     }
+
+    @GetMapping(value = "/getRoute")
+    public String[][] getRoute(){
+        return truckRouteService.getRouteString();
+    }
+
 }
