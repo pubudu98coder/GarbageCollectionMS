@@ -1,32 +1,46 @@
-package com.FinalYearProject.GarbageCollectionMS.controller.demo.UserControllers;
+package com.FinalYearProject.GarbageCollectionMS.controller.UserControllers;
 
+import com.FinalYearProject.GarbageCollectionMS.dto.*;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseOwnerComplaintsDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.OccasionRequestDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseOwnerComplaintsService;
 import com.FinalYearProject.GarbageCollectionMS.service.OccasionRequestService;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "api/v1/houseHolder")
-@CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
-@PreAuthorize("hasAnyRole('HOUSEHOLDER')")
+@CrossOrigin(origins = "http://localhost:3000")
+//@PreAuthorize("hasAnyRole('HOUSEHOLDER')")
 public class HouseHolderController {
-    @Autowired
-    private AuthenticationService authenticationService ;
-    @Autowired
-    private HouseOwnerComplaintsService houseOwnerComplaintsService;
-    @Autowired
-    private ResponseDTO responseDTO;
-    @Autowired
-    private OccasionRequestService occasionRequestService;
+    private final AuthenticationService authenticationService ;
+    private final HouseOwnerComplaintsService houseOwnerComplaintsService;
+    private final ResponseDTO responseDTO;
+    private final OccasionRequestService occasionRequestService;
+    private final HouseHolderService houseHolderService;
+
+    @GetMapping
+    public ResponseEntity<List<HouseHolderResponseDTO>> getAll(){
+        return ResponseEntity.ok(houseHolderService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<HouseHolderResponseDTO> getHouseHolderById(@PathVariable Integer id){
+        return ResponseEntity.ok(houseHolderService.getHouseHolderById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<HouseHolderResponseDTO> updateById(@PathVariable Integer id, @RequestBody HouseHolderDTO houseHolderDTO){
+        return ResponseEntity.ok(houseHolderService.updateById(id, houseHolderDTO));
+    }
 
     @PostMapping("/houseOwnerComplaints/add")
     @PreAuthorize("hasAuthority('house_holder:create')")

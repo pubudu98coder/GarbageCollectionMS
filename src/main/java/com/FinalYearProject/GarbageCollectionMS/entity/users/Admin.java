@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.entity.users.Visible;
+package com.FinalYearProject.GarbageCollectionMS.entity.users;
 
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import jakarta.persistence.Entity;
@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
@@ -14,6 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @PrimaryKeyJoinColumn
+@SuperBuilder
 public class Admin extends User {
     private String adNo;
 }

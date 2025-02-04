@@ -3,8 +3,8 @@ package com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.Role;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtService;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.Repository.*;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.token.Token;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.token.TokenType;
@@ -32,17 +32,7 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request){
         User user=null;
-//        if(request.getRole()== Role.SUPERVISOR){
-//            user=new Supervisor();
-//            user.setFirstName(request.getFirstName());
-//            user.setLastName(request.getLastName());
-//            user.setEmail(request.getEmail());
-//            user.setNicNo(request.getNicNo());
-//            user.setPassword(passwordEncoder.encode(request.getPassword()));
-//            user.setRole(request.getRole());
-//
-//            supervisorRepository.save((Supervisor) user);
-//        }
+
         if(request.getRole()== Role.HOUSEHOLDER){
             user=new HouseHolder();
             user.setFirstName(request.getFirstName());

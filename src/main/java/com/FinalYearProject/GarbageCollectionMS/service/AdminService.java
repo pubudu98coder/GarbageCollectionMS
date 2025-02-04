@@ -4,7 +4,7 @@ import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.Authen
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.dto.AdminDTO;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Admin;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Admin;
 import com.FinalYearProject.GarbageCollectionMS.Repository.AdminRepository;
 import com.FinalYearProject.GarbageCollectionMS.Repository.UserRepository;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;

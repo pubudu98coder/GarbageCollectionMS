@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.controller.demo;
+package com.FinalYearProject.GarbageCollectionMS.controller.UserControllers;
 import com.FinalYearProject.GarbageCollectionMS.dto.BinDataDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.VehicleDTO;

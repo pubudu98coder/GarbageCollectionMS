@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.controller.demo.UserControllers;
+package com.FinalYearProject.GarbageCollectionMS.controller.UserControllers;
 
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class DriverController {
     @Autowired
     private ResponseDTO responseDTO;
+
     @Autowired
     private TruckDriverComplaintsService truckDriverComplaintsService;
     @Autowired

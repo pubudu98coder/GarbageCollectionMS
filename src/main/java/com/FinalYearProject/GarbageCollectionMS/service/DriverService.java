@@ -5,7 +5,7 @@ import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtS
 import com.FinalYearProject.GarbageCollectionMS.dao.DriverDAO;
 import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.Driver;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
 import com.FinalYearProject.GarbageCollectionMS.Repository.DriverRepository;
 import com.FinalYearProject.GarbageCollectionMS.Repository.UserRepository;
 import com.FinalYearProject.GarbageCollectionMS.util.DriverPageDAO;

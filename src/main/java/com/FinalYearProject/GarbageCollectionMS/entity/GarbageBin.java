@@ -1,57 +1,52 @@
 package com.FinalYearProject.GarbageCollectionMS.entity;
 
-import com.FinalYearProject.GarbageCollectionMS.entity.users.Visible.HouseHolder;
+import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class GarbageBin {
-
     @Id
     @Column(unique = true)
-    private int id;
+    private Integer id;
 
-    @Column(name = "location_type", nullable = false)
-    private String locationType;
+    @NotNull("Longitude is required")
+    private Double longitude;
 
-    @Column(name = "line_address", nullable = false)
-    private String lineAddress;
+    @NotNull("Longitude is required")
+    private Double latitude;
 
-    @Column(name = "city", nullable = false)
-    private String city;
+    private String lane;
 
-    @Column(name = "type_of_waste", nullable = false)
-    private String typeOfWaste;
+    @Column(nullable = false)
+    private Double height;
 
-    //@Column(name = "height", nullable = false)
-    private double height;
+    @Column(nullable = false)
+    private Double baseArea;
 
-    @Column(name = "num_of_houses", nullable = false)
-    private int numOfHouses;
+    @Column( nullable = false)
+    private Integer numOfHouses;
 
-    //@Column(name = "base_area", nullable = false)
-    private double baseArea;
+    //updating after initializing
+    private double filledLevel;
+    private double filledVolume;
+    private String status;
+    private double percentage;
+    private boolean filled;
 
-    private double longitude;
-
-    private double latitude;
-
-    //private double filledHeight;
-
-    //mappings
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "garbageBin",fetch = FetchType.EAGER)
+    //garbageBin and HouseHolder one to many relation
+    @OneToMany(mappedBy = "garbageBin")
     private List<HouseHolder> houseHolders;
 
     @OneToMany(mappedBy = "garbageBin")
     private List<GarbageBinRouteAssign> garbageBinRouteAssignList;
-
-    private float filledLevel;
-    private float filledVolume;
-    private String status;
 }

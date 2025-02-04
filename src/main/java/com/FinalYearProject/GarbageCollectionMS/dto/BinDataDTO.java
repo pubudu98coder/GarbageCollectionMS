@@ -8,11 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class BinDataDTO {
-
     private int id;
-    private float longitude;
-    private float latitude;
-    private float filledLevel;
+    private Double longitude;
+    private Double latitude;
+    private Double filledLevel;
     //private String status;
-    private float filledVolume;
+    //private float filledVolume;
 }

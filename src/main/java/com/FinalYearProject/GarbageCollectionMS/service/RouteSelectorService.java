@@ -24,15 +24,15 @@ public class RouteSelectorService {
     //Store the matrix received by DistanceMatrixCall
     private long[][] matrix;
     //Store the id and capacity of trucks whose status is "available"
-    private float[][] truckArray;
+    private double[][] truckArray;
     //Store the id and filled volume of garbage bins whose status is "available" and status is "origin"
-    private float[][] filledBinInfo;
+    private double[][] filledBinInfo;
     //Store the id of truck whose capacity is highest which is not included in usedTrucks array
     int maxVehicleID = 0;
     ////Store the capacity of truck whose capacity is highest which is not included in usedTrucks array
-    float maxVehicleCap = 0;
+    double maxVehicleCap = 0;
     //Store the total volume of collected bins
-    float totalVolume = 0;
+    double totalVolume = 0;
     //Store the bin order and vehicle id of all paths
     String[][] allDetails;
     //Store the id's of used vehicles

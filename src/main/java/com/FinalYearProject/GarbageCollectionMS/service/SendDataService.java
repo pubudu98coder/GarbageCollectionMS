@@ -2,7 +2,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.BinDataDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
-import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +10,32 @@ import org.springframework.stereotype.Service;
 public class SendDataService {
 
     @Autowired
-    private GarbageBinRepo garbageBinRepo;
+    private GarbageBinRepository garbageBinRepository;
 
     public void saveDataToBin(BinDataDTO binDataDTO){
 
         //GarbageBin garbageBin = parseData(binDataDTO);
         //garbageBinRepo.save(garbageBin);
 
-        GarbageBin garbageBin = garbageBinRepo.findById(binDataDTO.getId()).orElse(null);
+        GarbageBin garbageBin = garbageBinRepository.findById(binDataDTO.getId()).orElse(null);
 
         if (garbageBin != null) {
             // Update the relevant fields with the new data
             garbageBin.setLatitude(binDataDTO.getLatitude());
             garbageBin.setLongitude(binDataDTO.getLongitude());
             garbageBin.setFilledLevel(binDataDTO.getFilledLevel());
-            garbageBin.setFilledVolume(binDataDTO.getFilledVolume());
+            //garbageBin.setFilledVolume(binDataDTO.getFilledVolume());
+            garbageBin.setFilledVolume(garbageBin.getBaseArea()* binDataDTO.getFilledLevel());
+            double percentage=(binDataDTO.getFilledLevel()/garbageBin.getHeight())*100;
+            garbageBin.setPercentage(percentage);
 
-            if(binDataDTO.getFilledLevel()>5){
-
-              garbageBin.setStatus("filled bin");
+            if(percentage>50){
+              garbageBin.setFilled(true);
             }
             //garbageBin.setStatus(binDataDTO.getStatus());
 
             // Save the updated entity back to the repository
-            garbageBinRepo.save(garbageBin);
+            garbageBinRepository.save(garbageBin);
         } else {
             // Handle the case when the entity is not found
             // For example, you can throw an exception or log a message

@@ -20,10 +20,8 @@ import java.io.IOException;
 @CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
-    @Autowired
-    private ResponseDTO responseDTO;
-    @Autowired
-    HouseHolderService houseHolderService;
+    private final ResponseDTO responseDTO;
+    private final HouseHolderService houseHolderService;
     @PostMapping(value = "/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest requestR){
         return  ResponseEntity.ok(authenticationService.register(requestR));
@@ -42,33 +40,7 @@ public class AuthenticationController {
         authenticationService.refreshToken(request,response);
     }
     @PostMapping(value="/registerHouseholder")
-    public ResponseEntity<ResponseDTO> registerHouseholder(@RequestBody HouseHolderDTO houseHolderDTO){
-       try{
-            String res=houseHolderService.addHouseHolder(houseHolderDTO);
-            if(res.equals("00")){
-                responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Succesfully saved");
-                responseDTO.setContent(houseHolderDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
-            }
-            else if(res.equals("06")){
-                responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Allready added");
-                responseDTO.setContent(houseHolderDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
-            }
-            else {
-                responseDTO.setCode(VarList.RSP_ERROR);
-                responseDTO.setMessage("Error");
-                responseDTO.setContent(houseHolderDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
-            }
-        }
-        catch (Exception ex){
-            responseDTO.setCode(VarList.RSP_ERROR);
-            responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent(null);
-            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<AuthenticationResponse> registerHouseholder(@RequestBody HouseHolderDTO houseHolderDTO){
+        return ResponseEntity.ok(houseHolderService.addHouseHolder(houseHolderDTO));
     }
 }

@@ -24,11 +24,11 @@ public class TruckCapacityService {
         System.out.println("truckRepo = " + truckRepo);
     }
 
-    public float[][] getAvailableTrucksIdAndCapacity() {
+    public double[][] getAvailableTrucksIdAndCapacity() {
         List<Truck> availableTrucks = truckRepo.findByStatus("available");
 
         // Define a multidimensional array to store IDs and capacities
-        float[][] truckInfoArray = new float[availableTrucks.size()][2];
+        double[][] truckInfoArray = new double[availableTrucks.size()][2];
 
         // Iterate through available trucks and store their IDs and capacities
         for (int i = 0; i < availableTrucks.size(); i++) {

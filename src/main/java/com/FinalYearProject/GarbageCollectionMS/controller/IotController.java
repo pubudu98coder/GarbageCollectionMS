@@ -30,7 +30,7 @@ public class IotController {
 
     @GetMapping(value = "/getdis")
 
-    public long getDistance(Float originLatitude, Float originLongitude, Float destinationLatitude1, Float destinationLongitude1) throws Exception {
+    public long getDistance(Double originLatitude, Double originLongitude, Double destinationLatitude1, Double destinationLongitude1) throws Exception {
 
         return distanceMatrixAPI.getData(originLatitude, originLongitude, destinationLatitude1, destinationLongitude1);
     }

@@ -33,7 +33,7 @@ public class SecurityConfiguration {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         //Make the below setting as * to allow connection from any hos
         corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
-        corsConfiguration.setAllowedMethods(List.of("GET", "POST"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST","PUT"));
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setAllowedHeaders(List.of("*"));
         corsConfiguration.setMaxAge(3600L);
@@ -49,7 +49,8 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         request->request
-                                .requestMatchers("/api/v1/auth/**")
+//                                .requestMatchers("/api/v1/auth/**")
+                                .requestMatchers("/api/v1/**")
                                 .permitAll()
 
 //                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), SUPERVISOR.name())

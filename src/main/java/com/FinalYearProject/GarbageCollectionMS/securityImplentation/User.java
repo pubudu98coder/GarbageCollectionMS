@@ -1,9 +1,11 @@
 package com.FinalYearProject.GarbageCollectionMS.securityImplentation;
 
+import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.Role;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -21,7 +23,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @Column(nullable = false)
     private String firstName;
@@ -43,7 +45,6 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String password;
-
 
     @Enumerated(EnumType.STRING)
     private Role role;

@@ -1,7 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
-import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepo;
+import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepository;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,18 +13,18 @@ import java.util.List;
 
 public class DistanceMatrixCall {
     @Autowired
-    private GarbageBinRepo garbageBinRepo;
+    private GarbageBinRepository garbageBinRepository;
 
     @Autowired
     private DistanceMatrixAPI distanceMatrixAPI;
 
     public long[][] callMatrix() throws ParseException {
-        long count = garbageBinRepo.count();
+        long count = garbageBinRepository.count();
         System.out.println("Count from repository: " + count);
 
         List<String> statusList = Arrays.asList("filled bin","origin");
 
-        List<GarbageBin> binList = garbageBinRepo.findByStatusIn(statusList);
+        List<GarbageBin> binList = garbageBinRepository.findByStatusIn(statusList);
 
 
 
@@ -42,7 +42,7 @@ public class DistanceMatrixCall {
             GarbageBin bin1 = binList.get(i);
             for (int j = i + 1; j < binList.size(); j++) {
                 GarbageBin bin2 = binList.get(j);
-                long distance = distanceMatrixAPI.getData((float) bin1.getLatitude(), (float) bin1.getLongitude(), (float) bin2.getLatitude(), (float) bin2.getLongitude());
+                long distance = distanceMatrixAPI.getData((Double) bin1.getLatitude(), (Double) bin1.getLongitude(), (Double) bin2.getLatitude(), (Double) bin2.getLongitude());
                 matrix[i][j] = distance;
                 matrix[j][i] = distance;
             }

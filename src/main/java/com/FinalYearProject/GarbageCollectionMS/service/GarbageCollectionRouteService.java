@@ -160,5 +160,5 @@ public class GarbageCollectionRouteService {
         // [END print_solution]
     }
 
-    private GarbageCollectionRouteService() {}
+    //private GarbageCollectionRouteService() {}
 }

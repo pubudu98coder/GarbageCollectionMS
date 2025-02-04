@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.controller.demo.UserControllers;
+package com.FinalYearProject.GarbageCollectionMS.controller.UserControllers;
 
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationResponse;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
@@ -47,6 +47,7 @@ public class AdminController {
 
     @PostMapping("/garbageBin/add")
     @PreAuthorize("hasAuthority('admin:create')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ResponseDTO> addGarbageBin(@RequestBody GarbageBinDTO garbageBinDTO){
 
         //return ResponseEntity.ok(garbageBinService.addBinDetails(garbageBinDTO));
@@ -78,6 +79,13 @@ public class AdminController {
             responseDTO.setContent(null);
             return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping(value = "garbageBin/getAll")
+    @PreAuthorize("hasAuthority('admin:read')")
+    public ResponseEntity<?> getAllGarbageBinData(){
+
+        return new ResponseEntity<>("GET::admin controller",HttpStatus.OK);
     }
 
     @PutMapping

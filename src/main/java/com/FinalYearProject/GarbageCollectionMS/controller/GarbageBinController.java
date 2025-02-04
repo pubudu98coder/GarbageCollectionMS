@@ -2,8 +2,12 @@ package com.FinalYearProject.GarbageCollectionMS.controller;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinIOTInput;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinRequestDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,16 +15,29 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/v1/garbageBin")
 @CrossOrigin
-
+@RequiredArgsConstructor
+//@PreAuthorize("hasAnyRole('ADMIN')")
 public class GarbageBinController {
+    private final GarbageBinService garbageBinService;
 
-    @Autowired
-    private GarbageBinService garbageBinService;
-
-    @GetMapping (value = "/viewBinData")
-    public List<GarbageBinDTO> viewBinData(){
-        return garbageBinService.getBinData();
+    @PostMapping("/add")
+//    @PreAuthorize("hasAuthority('admin:create')")
+    public ResponseEntity<GarbageBinResponseDTO> addGarbageBin(@RequestBody GarbageBinRequestDTO garbageBinRequestDTO ){
+        return ResponseEntity.ok(garbageBinService.addGarbageBin(garbageBinRequestDTO));
     }
+
+    @GetMapping("/getByLane/{lane}")
+//   @PreAuthorize("hasAuthority('admin:create')")
+    public ResponseEntity<List<GarbageBinResponseDTO>> getGarbageBinByLane(@PathVariable String lane){
+        return ResponseEntity.ok(garbageBinService.getGarbageBinByLane(lane));
+    }
+
+
+
+//    @GetMapping (value = "/viewBinData")
+//    public List<GarbageBinDTO> viewBinData(){
+//        return garbageBinService.getBinData();
+//    }
 
     @GetMapping (value = "/filledBinData")
     public List<GarbageBinDTO> viewFilledBins(){
@@ -38,7 +55,7 @@ public class GarbageBinController {
     }
 
     @GetMapping(value = "/getFilledBinIdAndVolume")
-    public float[][] getData(){
+    public double[][] getData(){
 
         return garbageBinService.getAvailableBinsIdAndFilledVolume();
 

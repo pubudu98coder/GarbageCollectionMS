@@ -35,7 +35,7 @@ public class TruckController {
     @Autowired
     private TruckCapacityService truckCapacityService;
     @GetMapping(value = "/availableTruckIdAndCapacity")
-    public float[][] getAvailableTrucksIdAndCapacity() {
+    public double[][] getAvailableTrucksIdAndCapacity() {
 
         return truckCapacityService.getAvailableTrucksIdAndCapacity();
     }

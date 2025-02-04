@@ -15,7 +15,7 @@ import java.net.http.HttpResponse;
 @Service
 public class DistanceMatrixAPI {
 
-    public long getData(Float originLatitude, Float originLongitude, Float destinationLatitude1, Float destinationLongitude1) throws ParseException {
+    public long getData(Double originLatitude, Double originLongitude, Double destinationLatitude1, Double destinationLongitude1) throws ParseException {
         if (originLatitude == null || originLongitude == null || destinationLatitude1 == null || destinationLongitude1 == null) {
             throw new IllegalArgumentException("Origin and destination coordinates must be provided");
         }

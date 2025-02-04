@@ -1,15 +1,17 @@
-package com.FinalYearProject.GarbageCollectionMS.entity.users.Visible;
+package com.FinalYearProject.GarbageCollectionMS.entity.users;
 
 import com.FinalYearProject.GarbageCollectionMS.entity.DriverTruckLog;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 @Data
 @Entity
 @RequiredArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 @PrimaryKeyJoinColumn//(name = "driver_id")
 public class Driver extends User {
     private String licenceNo;

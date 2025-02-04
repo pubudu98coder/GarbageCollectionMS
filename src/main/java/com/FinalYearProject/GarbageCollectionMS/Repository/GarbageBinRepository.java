@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 @Repository
-public interface GarbageBinRepo extends JpaRepository<GarbageBin,Integer> {
-
+public interface GarbageBinRepository extends JpaRepository<GarbageBin,Integer> {
+    List<GarbageBin> findGarbageBinsByLane(String lane);
     List<GarbageBin> findByStatus(String status);
     List<GarbageBin> findByFilledLevel(float filled_level);
 
