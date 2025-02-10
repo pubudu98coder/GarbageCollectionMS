@@ -1,14 +1,8 @@
 package com.FinalYearProject.GarbageCollectionMS.controller;
 
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
-import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

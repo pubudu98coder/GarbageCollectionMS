@@ -3,7 +3,7 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtService;
 import com.FinalYearProject.GarbageCollectionMS.dao.DriverDAO;
-import com.FinalYearProject.GarbageCollectionMS.dto.DriverDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.Driver.DriverDTO;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.Driver;
 import com.FinalYearProject.GarbageCollectionMS.Repository.DriverRepository;
