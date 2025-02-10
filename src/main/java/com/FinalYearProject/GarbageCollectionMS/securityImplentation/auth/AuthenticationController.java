@@ -1,14 +1,13 @@
 package com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth;
 
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.Driver.DriverRegisterRequestDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.ResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.service.DriverService;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
-import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +19,10 @@ import java.io.IOException;
 @CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
-    private final ResponseDTO responseDTO;
     private final HouseHolderService houseHolderService;
     @PostMapping(value = "/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest requestR){
-        return  ResponseEntity.ok(authenticationService.register(requestR));
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest registerRequest){
+        return  ResponseEntity.ok(authenticationService.register(registerRequest));
     }
 
     @PostMapping(value = "/authenticate")
@@ -42,5 +40,10 @@ public class AuthenticationController {
     @PostMapping(value="/registerHouseholder")
     public ResponseEntity<AuthenticationResponse> registerHouseholder(@RequestBody HouseHolderDTO houseHolderDTO){
         return ResponseEntity.ok(houseHolderService.addHouseHolder(houseHolderDTO));
+    }
+
+    @PostMapping("/registerDriver")
+    public ResponseEntity<AuthenticationResponse> registerDriver(@RequestBody DriverRegisterRequestDTO driverRegisterRequestDTO){
+        return ResponseEntity.ok(authenticationService.registerDriver(driverRegisterRequestDTO));
     }
 }
