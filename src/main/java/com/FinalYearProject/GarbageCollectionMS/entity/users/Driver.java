@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @RequiredArgsConstructor
@@ -18,8 +19,7 @@ public class Driver extends User {
     //@Column(nullable = false)
     private String empNumber;
 
-    //@Column(nullable = false)
-    private String status;
+    private boolean available;
 
     @OneToMany(mappedBy = "driver")
     private List<DriverTruckLog> driverTruckLogList;
