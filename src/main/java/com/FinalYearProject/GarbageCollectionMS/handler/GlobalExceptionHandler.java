@@ -1,13 +1,17 @@
 package com.FinalYearProject.GarbageCollectionMS.handler;
 
 import com.FinalYearProject.GarbageCollectionMS.handler.ExceptionResponse;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -55,6 +59,32 @@ public class GlobalExceptionHandler {
                                 .validationErrors(errors)
                                 .build()
                 );
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ExceptionResponse> handleException(BadCredentialsException exception){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+                ExceptionResponse.builder()
+                        .error(exception.getMessage())
+                        .build()
+        );
+    }
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ExceptionResponse> handleException(AccessDeniedException exception){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                ExceptionResponse.builder()
+                        .error(exception.getMessage())
+                        .build()
+        );
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<ExceptionResponse> handleException(ExpiredJwtException exception){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+                ExceptionResponse.builder()
+                        .error("Provided JWT access token is expired")
+                        .build()
+        );
     }
 
     @ExceptionHandler(Exception.class)
