@@ -2,8 +2,8 @@ package com.FinalYearProject.GarbageCollectionMS.controller;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinIOTInput;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinRequestDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin.GarbageBinRequestDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin.GarbageBinResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.service.GarbageBinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,28 +16,20 @@ import java.util.List;
 @RequestMapping(value = "/api/v1/garbageBin")
 @CrossOrigin
 @RequiredArgsConstructor
-//@PreAuthorize("hasAnyRole('ADMIN')")
 public class GarbageBinController {
     private final GarbageBinService garbageBinService;
 
     @PostMapping("/add")
-//    @PreAuthorize("hasAuthority('admin:create')")
+    @PreAuthorize("hasAuthority('admin:create')")
     public ResponseEntity<GarbageBinResponseDTO> addGarbageBin(@RequestBody GarbageBinRequestDTO garbageBinRequestDTO ){
         return ResponseEntity.ok(garbageBinService.addGarbageBin(garbageBinRequestDTO));
     }
 
     @GetMapping("/getByLane/{lane}")
-//   @PreAuthorize("hasAuthority('admin:create')")
+    @PreAuthorize("hasAuthority('admin:read')")
     public ResponseEntity<List<GarbageBinResponseDTO>> getGarbageBinByLane(@PathVariable String lane){
         return ResponseEntity.ok(garbageBinService.getGarbageBinByLane(lane));
     }
-
-
-
-//    @GetMapping (value = "/viewBinData")
-//    public List<GarbageBinDTO> viewBinData(){
-//        return garbageBinService.getBinData();
-//    }
 
     @GetMapping (value = "/filledBinData")
     public List<GarbageBinDTO> viewFilledBins(){

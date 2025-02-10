@@ -2,8 +2,8 @@ package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.dao.GarbageBinDAO;
 import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinRequestDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin.GarbageBinRequestDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin.GarbageBinResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepository;
 import com.FinalYearProject.GarbageCollectionMS.mapper.GarbageBinMapper;
@@ -34,6 +34,13 @@ public class GarbageBinService {
         GarbageBin garbageBin = garbageBinMapper.toGarbageBin(garbageBinRequestDTO);
 
         return garbageBinMapper.toGarbageBinResponseDTO(garbageBinRepository.save(garbageBin));
+    }
+
+    public List<GarbageBinResponseDTO> getGarbageBinByLane(String lane) {
+        return garbageBinRepository.findGarbageBinsByLane(lane)
+                .stream()
+                .map(garbageBinMapper::toGarbageBinResponseDTO)
+                .collect(Collectors.toList());
     }
 
 //    public List<GarbageBinDTO> getBinData (){
@@ -111,10 +118,5 @@ public class GarbageBinService {
     }
 
 
-    public List<GarbageBinResponseDTO> getGarbageBinByLane(String lane) {
-        return garbageBinRepository.findGarbageBinsByLane(lane)
-                .stream()
-                .map(garbageBinMapper::toGarbageBinResponseDTO)
-                .collect(Collectors.toList());
-    }
+
 }

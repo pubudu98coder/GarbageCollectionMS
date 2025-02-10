@@ -1,7 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.mapper;
 
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinRequestDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBinResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin.GarbageBinRequestDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin.GarbageBinResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +14,7 @@ public class GarbageBinMapper {
                 .latitude(garbageBinRequestDTO.latitude())
                 .height(garbageBinRequestDTO.height())
                 .baseArea(garbageBinRequestDTO.baseArea())
+                .lane(garbageBinRequestDTO.lane())
                 .numOfHouses(garbageBinRequestDTO.numOfHouses())
                 .build();
     }
@@ -26,6 +27,7 @@ public class GarbageBinMapper {
                 .lane(garbageBin.getLane())
                 .height(garbageBin.getHeight())
                 .baseArea(garbageBin.getBaseArea())
+                .lane(garbageBin.getLane())
                 .numOfHouses(garbageBin.getNumOfHouses())
                 .build();
     }
