@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.dto;
+package com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

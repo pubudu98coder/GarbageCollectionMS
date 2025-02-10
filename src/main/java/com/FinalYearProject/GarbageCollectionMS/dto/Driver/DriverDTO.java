@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.dto;
+package com.FinalYearProject.GarbageCollectionMS.dto.Driver;
 
 import jakarta.persistence.Column;
 import lombok.*;

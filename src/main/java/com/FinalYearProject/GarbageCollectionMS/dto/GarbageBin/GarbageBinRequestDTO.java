@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.dto;
+package com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,6 +13,8 @@ public record GarbageBinRequestDTO(
         Double height,
         @NotNull("BaseArea is required")
         Double baseArea,
+        @NotNull("Lane is Required")
+        String lane,
         @NotNull("Number of houses is required")
         Integer numOfHouses
 ) {

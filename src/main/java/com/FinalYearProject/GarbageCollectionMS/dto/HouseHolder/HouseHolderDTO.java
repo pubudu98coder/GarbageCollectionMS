@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.dto;
+package com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -18,8 +18,9 @@ public class HouseHolderDTO {
     private String address;
     private String email;
     private String mobileNo;
-    private String lane;
     private String password;
+
+    private String lane;
     private Integer garbageBinId;
     private Double longitude;
     private Double latitude;

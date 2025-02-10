@@ -1,4 +1,4 @@
-package com.FinalYearProject.GarbageCollectionMS.dto;
+package com.FinalYearProject.GarbageCollectionMS.dto.GarbageBin;
 
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
