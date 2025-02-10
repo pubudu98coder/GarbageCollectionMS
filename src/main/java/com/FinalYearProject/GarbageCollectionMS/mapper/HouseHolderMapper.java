@@ -1,7 +1,7 @@
 package com.FinalYearProject.GarbageCollectionMS.mapper;
 
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.Role;
 import org.springframework.stereotype.Service;

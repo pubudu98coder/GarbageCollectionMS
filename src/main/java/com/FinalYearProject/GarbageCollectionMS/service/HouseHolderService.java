@@ -1,23 +1,19 @@
 package com.FinalYearProject.GarbageCollectionMS.service;
 
 import com.FinalYearProject.GarbageCollectionMS.Repository.GarbageBinRepository;
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderResponseDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.mapper.HouseHolderMapper;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationResponse;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.config.JwtService;
-import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolderDTO;
-import com.FinalYearProject.GarbageCollectionMS.securityImplentation.User;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderDTO;
 import com.FinalYearProject.GarbageCollectionMS.entity.users.HouseHolder;
 import com.FinalYearProject.GarbageCollectionMS.Repository.HouseHolderRepository;
 import com.FinalYearProject.GarbageCollectionMS.Repository.UserRepository;
-import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -50,7 +46,7 @@ public class HouseHolderService {
     public AuthenticationResponse addHouseHolder(HouseHolderDTO houseHolderDTO){
         if(userRepository.existsByNicNo(houseHolderDTO.getNicNo())){
             System.out.println(houseHolderDTO.getNicNo());
-            throw new DataIntegrityViolationException("Householder Already exists");
+            throw new DataIntegrityViolationException("Householder NIC number Already exists");
         }
         else{
             HouseHolder houseHolder = houseHolderMapper.toHouseHolder(houseHolderDTO);
@@ -102,7 +98,6 @@ public class HouseHolderService {
             );
             houseHolder.setGarbageBin(garbageBin);
         }
-
         return houseHolderMapper.toHouseHolderResponseDTO(houseHolderRepository.save(houseHolder));
 
     }

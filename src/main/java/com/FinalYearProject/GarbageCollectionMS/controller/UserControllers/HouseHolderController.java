@@ -1,13 +1,14 @@
 package com.FinalYearProject.GarbageCollectionMS.controller.UserControllers;
 
 import com.FinalYearProject.GarbageCollectionMS.dto.*;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderDTO;
+import com.FinalYearProject.GarbageCollectionMS.dto.HouseHolder.HouseHolderResponseDTO;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseHolderService;
 import com.FinalYearProject.GarbageCollectionMS.service.HouseOwnerComplaintsService;
 import com.FinalYearProject.GarbageCollectionMS.service.OccasionRequestService;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "api/v1/houseHolder")
 @CrossOrigin(origins = "http://localhost:3000")
-//@PreAuthorize("hasAnyRole('HOUSEHOLDER')")
+@PreAuthorize("hasAnyRole('HOUSEHOLDER','ADMIN')")
 public class HouseHolderController {
     private final AuthenticationService authenticationService ;
     private final HouseOwnerComplaintsService houseOwnerComplaintsService;
@@ -28,6 +29,7 @@ public class HouseHolderController {
     private final HouseHolderService houseHolderService;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('admin:read')")
     public ResponseEntity<List<HouseHolderResponseDTO>> getAll(){
         return ResponseEntity.ok(houseHolderService.getAll());
     }
