@@ -1,12 +1,11 @@
 package com.FinalYearProject.GarbageCollectionMS.controller.UserControllers;
 
-import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationResponse;
+import com.FinalYearProject.GarbageCollectionMS.dto.Driver.DriverDTO;
 import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.AuthenticationService;
-import com.FinalYearProject.GarbageCollectionMS.securityImplentation.auth.RegisterRequest;
 import com.FinalYearProject.GarbageCollectionMS.dto.*;
-import com.FinalYearProject.GarbageCollectionMS.entity.GarbageBin;
 import com.FinalYearProject.GarbageCollectionMS.service.*;
 import com.FinalYearProject.GarbageCollectionMS.util.VarList;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,156 +13,27 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "api/v1/admin")
 @CrossOrigin(origins = "http://localhost:3000",allowCredentials ="true",allowedHeaders = "*")
 @PreAuthorize("hasAnyRole('ADMIN')")
 public class AdminController {
-    @Autowired
-    private GarbageBinService garbageBinService;
-
-    @Autowired
-    private AuthenticationService authenticationService ;
-
-    @Autowired
-    private ResponseDTO responseDTO;
-    @Autowired
-    private HouseHolderService houseHolderService;
-    @Autowired
-    private AdminService adminService;
-    @Autowired
-    private DriverService driverService;
-    @Autowired
-    private TruckService truckService;
-    @Autowired
-    private NewsPageService newsPageService;
-    @Autowired
-    private AboutUsPageService aboutUsPageService;
-
-    @GetMapping
-    @PreAuthorize("hasAuthority('admin:read')")
-    public String get(){
-        return "GET::admin controller";
-    }
-
-    @PostMapping("/garbageBin/add")
-    @PreAuthorize("hasAuthority('admin:create')")
-    //@PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ResponseDTO> addGarbageBin(@RequestBody GarbageBinDTO garbageBinDTO){
-
-        //return ResponseEntity.ok(garbageBinService.addBinDetails(garbageBinDTO));
-        //"POST::admin controller";
-        try{
-            String res=garbageBinService.addBinDetails(garbageBinDTO);
-            if(res.equals("00")){
-                responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Successfully saved");
-                responseDTO.setContent(garbageBinDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.OK);
-            }
-            else if (res.equals("06")) {
-                responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Already added");
-                responseDTO.setContent(garbageBinDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.CONFLICT);
-            }
-            else {
-                responseDTO.setCode(VarList.RSP_ERROR);
-                responseDTO.setMessage("Error");
-                responseDTO.setContent(garbageBinDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.CONFLICT);//need to add appropriate status code
-            }
-        }
-        catch (Exception ex){
-            responseDTO.setCode(VarList.RSP_ERROR);
-            responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent(null);
-            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    private final GarbageBinService garbageBinService;
+    private final ResponseDTO responseDTO;
+    private final AdminService adminService;
+    private final DriverService driverService;
+    private final TruckService truckService;
+    private final NewsPageService newsPageService;
+    private final AboutUsPageService aboutUsPageService;
 
     @GetMapping(value = "garbageBin/getAll")
     @PreAuthorize("hasAuthority('admin:read')")
     public ResponseEntity<?> getAllGarbageBinData(){
-
         return new ResponseEntity<>("GET::admin controller",HttpStatus.OK);
     }
 
-    @PutMapping
-    @PreAuthorize("hasAuthority('admin:update')")
-    public String put(){
-        return "PUT::admin controller";
-    }
-
-    @DeleteMapping
-    @PreAuthorize("hasAuthority('admin:delete')")
-    public String delete(){
-        return "DELETE::admin controller";
-    }
-
-    @PostMapping(value="/registerAdmin")
-    @PreAuthorize("hasAnyAuthority('admin:create')")
-    public ResponseEntity<ResponseDTO> registerAdmin(@RequestBody AdminDTO adminDTO){
-        try{
-            String res=adminService.registerAdmin(adminDTO);
-            if(res.equals("00")){
-                responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Successfully saved");
-                responseDTO.setContent(adminDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
-            }
-            else if(res.equals("06")){
-                responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Already added");
-                responseDTO.setContent(adminDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
-            }
-            else {
-                responseDTO.setCode(VarList.RSP_ERROR);
-                responseDTO.setMessage("Error");
-                responseDTO.setContent(adminDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
-            }
-        }
-        catch (Exception ex){
-            responseDTO.setCode(VarList.RSP_ERROR);
-            responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent(null);
-            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
     //Driver
-    @PostMapping(value="/registerDriver")
-    @PreAuthorize("hasAuthority('admin:create')")
-    public ResponseEntity<ResponseDTO> registerDriver(@RequestBody DriverDTO driverDTO){
-        try{
-            String res=driverService.registerDriver(driverDTO);
-            if(res.equals("00")){
-                responseDTO.setCode(VarList.RSP_SUCCESS);
-                responseDTO.setMessage("Successfully saved");
-                responseDTO.setContent(driverDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
-            }
-            else if(res.equals("06")){
-                responseDTO.setCode(VarList.RSP_DUPLICATED);
-                responseDTO.setMessage("Already added");
-                responseDTO.setContent(driverDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.ALREADY_REPORTED);
-            }
-            else {
-                responseDTO.setCode(VarList.RSP_ERROR);
-                responseDTO.setMessage("Error");
-                responseDTO.setContent(driverDTO);
-                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
-            }
-        }
-        catch (Exception ex){
-            responseDTO.setCode(VarList.RSP_ERROR);
-            responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent(null);
-            return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
     //get all drivers
     @GetMapping("/getDrivers")
     @PreAuthorize("hasAnyAuthority('admin:read')")
