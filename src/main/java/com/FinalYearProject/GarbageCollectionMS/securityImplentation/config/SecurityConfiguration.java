@@ -50,7 +50,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                         request->request
 //                                .requestMatchers("/api/v1/auth/**")
-                                .requestMatchers("/api/v1/**")
+                                .requestMatchers("/api/v1/auth/**")
                                 .permitAll()
 
 //                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), SUPERVISOR.name())
